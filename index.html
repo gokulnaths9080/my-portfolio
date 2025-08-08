@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +24,605 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Custom Portfolio Design -->
+  <style>
+    /* Modern Portfolio Design System */
+    :root {
+      /* New Color Palette */
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      --light-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      
+      /* Modern Colors */
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #4facfe;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --error-color: #ef4444;
+      
+      /* Neutral Colors */
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      
+      /* Border Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+    }
+
+    /* Global Styles */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--gray-800);
+      background: var(--white);
+    }
+
+    /* Header Redesign */
+    .header {
+      background: var(--dark-gradient);
+      border-right: none;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .header .profile-img img {
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+    }
+
+    .header .profile-img img:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-2xl);
+    }
+
+    .header .logo h1 {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .header .social-links a {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      padding: 0.75rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .header .social-links a:hover {
+      background: var(--primary-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Navigation Redesign */
+    .navmenu a {
+      border-radius: var(--radius-lg);
+      margin: 0.25rem 0;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .navmenu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-gradient);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .navmenu a:hover::before,
+    .navmenu .active::before {
+      left: 0;
+    }
+
+    .navmenu a:hover,
+    .navmenu .active {
+      color: var(--white);
+      transform: translateX(5px);
+    }
+
+    /* Hero Section Redesign */
+    .hero {
+      background: var(--primary-gradient);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* Button Redesign */
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary-color);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-2xl);
+      color: var(--primary-color);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Section Titles Redesign */
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-title p {
+      font-size: 1.125rem;
+      color: var(--gray-600);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* Cards Redesign */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Skills Section Redesign */
+    .skills {
+      background: var(--light-gradient);
+      position: relative;
+    }
+
+    .skills .progress {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills .progress::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .skills .progress:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skills .progress:hover::before {
+      transform: scaleX(1);
+    }
+
+    .skills .progress .skill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--gray-800);
+    }
+
+    .skills .progress .skill .val {
+      background: var(--primary-gradient);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skills .progress-bar-wrap {
+      background: var(--gray-200);
+      height: 12px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .skills .progress-bar {
+      height: 12px;
+      background: var(--primary-gradient);
+      border-radius: var(--radius-full);
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Experience Section Redesign */
+    .experience {
+      background: var(--light-gradient);
+    }
+
+    .experience-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .experience-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--primary-gradient);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.75rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .job-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 0.5rem;
+    }
+
+    .company-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    /* Project Cards Redesign */
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary-gradient);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .project-badge {
+      background: var(--primary-gradient);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* Contact Section Redesign */
+    .contact {
+      background: var(--light-gradient);
+    }
+
+    .info-wrap {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .info-item {
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+      border: 1px solid var(--gray-200);
+    }
+
+    .info-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .info-item i {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-gradient);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.25rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Form Redesign */
+    .form-control {
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--white);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background: var(--primary-gradient);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    [data-aos] {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        width: 100%;
+        position: relative;
+        height: auto;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .card,
+      .experience-card,
+      .project-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Scroll Top Button Redesign */
+    .scroll-top {
+      background: var(--primary-gradient);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Preloader Redesign */
+    #preloader {
+      background: var(--primary-gradient);
+    }
+
+    #preloader:before {
+      border: 3px solid var(--white);
+      border-top-color: transparent;
+    }
+  </style>
 
  
 </head>
@@ -91,95 +690,354 @@
       <img src="assets/img/hero.jpg" alt="" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-<h2 class="inkfree-name">Gokulnath Settu</h2>
-<style>
-.inkfree-name {
-  font-family: "Ink Free", "Comic Sans MS", cursive, sans-serif;
-  font-size: 2.4rem;
-  font-weight: normal;
-  color: #fefefe;
-  margin: 0;
-}
+        <div class="hero-content">
+          <h1 class="hero-title">Gokulnath Settu</h1>
+          <p class="hero-subtitle">Full Stack Developer & Creative Technologist</p>
+          <p class="hero-description" id="premiumText"></p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+          </div>
+        </div>
+      </div>
 
-</style>
-
-  </style>
-  <p class="premium-text" id="premiumText"></p>
-
-  <script>
-    const text = "Turning complex challenges into elegant, user-friendly web applications.";
-    const el = document.getElementById("premiumText");
-
-    let i = 0;
-    let isDeleting = false;
-
-    function typeLoop() {
-      if (!isDeleting) {
-        el.textContent = text.substring(0, i + 1);
-        i++;
-        if (i === text.length) {
-          setTimeout(() => {
-            isDeleting = true;
-            typeLoop();
-          }, 1500); // wait before deleting
-          return;
+      <style>
+        .hero-content {
+          text-align: left;
+          max-width: 600px;
+          margin: 0;
+          padding: 4rem 0;
         }
-      } else {
-        el.textContent = text.substring(0, i - 1);
-        i--;
-        if (i === 0) {
-          isDeleting = false;
+
+        .hero-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 4rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 1rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-      }
 
-      setTimeout(typeLoop, isDeleting ? 40 : 80); // typing & deleting speeds
-    }
+        .hero-subtitle {
+          font-family: 'Inter', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: #e2e8f0;
+          margin-bottom: 2rem;
+          letter-spacing: 0.5px;
+        }
 
-    // Start typing when page loads
-    window.onload = typeLoop;
-  </script>
+        .hero-description {
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 1.25rem;
+          font-weight: 300;
+          color: #cbd5e0;
+          margin-bottom: 3rem;
+          line-height: 1.6;
+          min-height: 2rem;
+        }
+
+        .hero-cta {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 1rem 2rem;
+          border-radius: 50px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+          color: white;
+        }
+
+        .btn-outline {
+          background: transparent;
+          color: #e2e8f0;
+          border-color: #e2e8f0;
+        }
+
+        .btn-outline:hover {
+          background: #e2e8f0;
+          color: #1a202c;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .hero-title {
+            font-size: 2.5rem;
+          }
+          .hero-subtitle {
+            font-size: 1.25rem;
+          }
+          .hero-description {
+            font-size: 1.1rem;
+          }
+          .hero-cta {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .hero-content {
+            padding: 2rem 0;
+          }
+        }
+      </style>
+
+      <script>
+        const text = "Crafting elegant digital experiences through innovative code and creative design.";
+        const el = document.getElementById("premiumText");
+
+        let i = 0;
+        let isDeleting = false;
+
+        function typeLoop() {
+          if (!isDeleting) {
+            el.textContent = text.substring(0, i + 1);
+            i++;
+            if (i === text.length) {
+              setTimeout(() => {
+                isDeleting = true;
+                typeLoop();
+              }, 2000);
+              return;
+            }
+          } else {
+            el.textContent = text.substring(0, i - 1);
+            i--;
+            if (i === 0) {
+              isDeleting = false;
+            }
+          }
+
+          setTimeout(typeLoop, isDeleting ? 50 : 100);
+        }
+
+        window.onload = typeLoop;
+      </script>
 
       </div>
 
     </section><!-- /Hero Section -->
 
-    <br>
-   
-    <!-- Resume Section -->
-<section id="resume" class="resume-section">
-   <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="resume-download-btn">
-  <i class="fa fa-download"></i> Download Resume
-</a>
 
-  <script>
-  const btn = document.querySelector('.resume-download-btn');
-  btn.addEventListener('click', () => {
-    btn.innerHTML = "<i class='fa fa-check'></i> Downloaded!";
-    setTimeout(() => {
-      btn.innerHTML = "<i class='fa fa-download'></i> Download Resume";
-    }, 2000);
-  });
-</script>
-
-</section>
 
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4 justify-content-center">
+        <div class="row gy-5 justify-content-center align-items-center">
           <div class="col-lg-4">
-            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
+            <div class="about-image-wrapper">
+              <img src="assets/img/my-profile-img.jpg" class="img-fluid about-image" alt="Gokulnath Settu">
+              <div class="about-image-overlay"></div>
+            </div>
           </div>
           <div class="col-lg-8 content">
-            <h2>Full stack Developer &amp; Web Designer.</h2>
-            <p class="fst-italic py-3" style="font-family: Verdana, sans-serif;">
-              I am a passionate Full Stack Developer specializing in building scalable, high-performing applications using cutting-edge technologies including Python, Java, PHP, and JavaScript. With expertise spanning both frontend and backend development, I create seamless digital experiences that bridge the gap between innovative concepts and robust technical implementation. My approach combines creative problem-solving with systematic engineering to deliver solutions that not only meet current requirements but scale for future growth.
-              Your ideas, my code! I believe in transforming visionary concepts into tangible, user-centric applications that make a real-world impact.  
-              <br>
-              <br>
-              I envision a future where technology seamlessly integrates with business processes to create more efficient, intelligent, and user-friendly digital ecosystems. My goal is to be at the forefront of this transformation, continuously pushing the boundaries of what's possible through innovative full-stack development and data-driven insights.
-              Whether you're a startup looking to build your first application or an established enterprise seeking to modernize your digital infrastructure, I bring the perfect combination of technical expertise, business understanding, and creative problem-solving to turn your vision into reality.
-            </p>
+            <div class="about-content">
+              <h2 class="about-title">Full Stack Developer & Creative Technologist</h2>
+              <p class="about-description">
+                I am a passionate Full Stack Developer specializing in building scalable, high-performing applications using cutting-edge technologies including Python, Java, PHP, and JavaScript. With expertise spanning both frontend and backend development, I create seamless digital experiences that bridge the gap between innovative concepts and robust technical implementation.
+              </p>
+              <p class="about-description">
+                My approach combines creative problem-solving with systematic engineering to deliver solutions that not only meet current requirements but scale for future growth. I envision a future where technology seamlessly integrates with business processes to create more efficient, intelligent, and user-friendly digital ecosystems.
+              </p>
+                           <div class="about-highlight">
+               <span class="highlight-text">Your ideas, my code!</span> I believe in transforming visionary concepts into tangible, user-centric applications that make a real-world impact.
+             </div>
+             
+             <div class="about-cta">
+               <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="resume-download-btn">
+                 <i class="bi bi-download"></i>
+                 <span>Download Resume</span>
+                 <div class="btn-glow"></div>
+               </a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+        <style>
+          .about-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            transition: transform 0.3s ease;
+          }
+
+          .about-image-wrapper:hover {
+            transform: translateY(-10px);
+          }
+
+          .about-image {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
+
+          .about-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            pointer-events: none;
+          }
+
+          .about-content {
+            padding-left: 2rem;
+          }
+
+          .about-title {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          .about-description {
+            font-family: var(--body-font);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--default-color);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+          }
+
+          .about-highlight {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+            margin-top: 2rem;
+            font-family: var(--body-font);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--default-color);
+          }
+
+                     .highlight-text {
+             font-weight: 700;
+             color: var(--accent-color);
+             font-size: 1.2rem;
+           }
+
+                     .about-cta {
+             margin-top: 2rem;
+             text-align: left;
+           }
+
+           .resume-download-btn {
+             position: relative;
+             display: inline-flex;
+             align-items: center;
+             gap: 0.75rem;
+             padding: 1rem 2rem;
+             background: var(--accent-gradient);
+             color: white;
+             text-decoration: none;
+             border-radius: 50px;
+             font-family: var(--nav-font);
+             font-weight: 600;
+             font-size: 1rem;
+             letter-spacing: 0.02em;
+             box-shadow: var(--shadow-medium);
+             transition: all 0.3s ease;
+             overflow: hidden;
+             border: none;
+             cursor: pointer;
+           }
+
+           .resume-download-btn:hover {
+             transform: translateY(-3px);
+             box-shadow: var(--shadow-heavy);
+             color: white;
+             text-decoration: none;
+           }
+
+           .resume-download-btn i {
+             font-size: 1.1rem;
+             transition: transform 0.3s ease;
+           }
+
+           .resume-download-btn:hover i {
+             transform: translateY(-2px);
+           }
+
+           .btn-glow {
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+             transition: left 0.5s ease;
+           }
+
+           .resume-download-btn:hover .btn-glow {
+             left: 100%;
+           }
+
+           @media (max-width: 991px) {
+             .about-content {
+               padding-left: 0;
+               padding-top: 2rem;
+             }
+             
+             .about-title {
+               font-size: 2rem;
+             }
+
+             .about-cta {
+               text-align: center;
+             }
+           }
+        </style>
+
+        <script>
+          // Resume download button functionality
+          document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.querySelector('.resume-download-btn');
+            if (btn) {
+              btn.addEventListener('click', () => {
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<i class="bi bi-check-circle"></i><span>Downloaded!</span><div class="btn-glow"></div>';
+                btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                
+                setTimeout(() => {
+                  btn.innerHTML = originalContent;
+                  btn.style.background = 'var(--accent-gradient)';
+                }, 2000);
+              });
+            }
+          });
+        </script>
             
           </div>
         </div>
@@ -189,44 +1047,335 @@
       
 
       
-<section id="experience" class="Experience section"></section>
- <div class="experience-section">
-        <div class="section-header">
-            <h2 class="section-title">Professional Experience</h2>
-            <p class="section-subtitle">Building scalable solutions and growing technical expertise</p>
-        </div>
+    <!-- Professional Experience Section -->
+    <section id="experience" class="experience section light-background">
 
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="job-title">Full Stack Developer</h3>
-                    <h4 class="company-name">XESS Tech Link</h4>
-                    <span class="duration">July 2022 - August 2023</span>
-                    <p class="location">Erode, Tamil Nadu, India</p>
-                    
-                    <ul class="responsibilities">
-                        <li>Built and maintained robust web applications using PHP, MySQL, HTML, CSS, and JavaScript, serving thousands of users</li>
-                        <li>Collaborated with cross-functional teams in an Agile environment, participating in daily standups and sprint planning</li>
-                        <li>Handled both front-end user interface development and back-end server logic efficiently</li>
-                        <li>Contributed to debugging, testing, and deployment processes, ensuring 99% uptime</li>
-                        <li>Optimized database queries and application performance, reducing page load times by 40%</li>
-                        <li>Participated in code reviews and maintained coding standards across the development team</li>
-                    </ul>
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Professional Experience</h2>
+        <p>Building scalable solutions and growing technical expertise through hands-on development experience</p>
+      </div><!-- End Section Title -->
 
-                    <div class="skills-used">
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">Agile</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Debugging</span>
-                    </div>
+      <div class="container">
+        <div class="experience-timeline">
+          
+          <!-- Experience Item -->
+          <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-icon">
+                  <i class="bi bi-code-slash"></i>
                 </div>
+                <div class="experience-meta">
+                  <h3 class="job-title">Full Stack Developer</h3>
+                  <h4 class="company-name">XESS Tech Link</h4>
+                  <div class="experience-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      July 2022 - August 2023
+                    </span>
+                                         <span class="location">
+                       <i class="bi bi-geo-alt"></i>
+                       Erode, Tamil Nadu
+                     </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-content">
+                <div class="experience-description">
+                  <p>Led development of robust web applications serving thousands of users, with focus on performance optimization and scalable architecture.</p>
+                </div>
+                
+                <div class="experience-achievements">
+                  <h5>Key Achievements</h5>
+                  <div class="achievement-list">
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Built and maintained robust web applications using PHP, MySQL, HTML, CSS, and JavaScript</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Collaborated with cross-functional teams in Agile environment with daily standups</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Handled both front-end UI development and back-end server logic efficiently</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Contributed to debugging, testing, and deployment processes ensuring 99% uptime</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Optimized database queries and application performance, reducing page load times by 40%</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Participated in code reviews and maintained coding standards across the development team</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="experience-skills">
+                  <h5>Technologies & Skills</h5>
+                  <div class="skills-grid">
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Agile</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Debugging</span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
         </div>
+      </div>
+
+      <style>
+        .experience {
+          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          padding: 5rem 0;
+        }
+
+        .experience .section-title h2 {
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .experience .section-title p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--text-muted);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .experience-timeline {
+          max-width: 900px;
+          margin: 0 auto;
+          position: relative;
+        }
+
+        .experience-item {
+          margin-bottom: 3rem;
+        }
+
+        .experience-card {
+          background: var(--surface-color);
+          border-radius: 20px;
+          padding: 2.5rem;
+          box-shadow: var(--shadow-light);
+          transition: all 0.3s ease;
+          border: 1px solid var(--border-color);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .experience-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--accent-gradient);
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-heavy);
+        }
+
+        .experience-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .experience-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .experience-icon {
+          width: 70px;
+          height: 70px;
+          background: var(--accent-gradient);
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.8rem;
+          box-shadow: var(--shadow-medium);
+          flex-shrink: 0;
+        }
+
+        .experience-meta {
+          flex: 1;
+        }
+
+        .job-title {
+          font-family: var(--heading-font);
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: var(--heading-color);
+          margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+          font-family: var(--nav-font);
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: var(--accent-color);
+          margin-bottom: 1rem;
+        }
+
+        .experience-details {
+          display: flex;
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+
+        .duration, .location {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: #000000;
+        }
+
+        .duration i, .location i {
+          color: var(--accent-color);
+          font-size: 1rem;
+        }
+
+        .experience-content {
+          margin-top: 1.5rem;
+        }
+
+        .experience-description {
+          margin-bottom: 2rem;
+        }
+
+        .experience-description p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--default-color);
+          font-weight: 500;
+        }
+
+        .experience-achievements {
+          margin-bottom: 2rem;
+        }
+
+        .experience-achievements h5 {
+          font-family: var(--heading-font);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 1rem;
+        }
+
+        .achievement-list {
+          display: grid;
+          gap: 0.75rem;
+        }
+
+        .achievement-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: var(--default-color);
+          line-height: 1.5;
+        }
+
+        .achievement-item i {
+          color: var(--accent-color);
+          font-size: 1rem;
+          margin-top: 0.1rem;
+          flex-shrink: 0;
+        }
+
+        .experience-skills {
+          margin-top: 2rem;
+        }
+
+        .experience-skills h5 {
+          font-family: var(--heading-font);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+        }
+
+        .skill-tag {
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          color: var(--accent-color);
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          font-family: var(--nav-font);
+          border: 1px solid rgba(102, 126, 234, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+          background: var(--accent-gradient);
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .experience-card {
+            padding: 2rem;
+          }
+          
+          .experience-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          
+          .experience-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+          }
+          
+          .job-title {
+            font-size: 1.5rem;
+          }
+          
+          .experience-details {
+            justify-content: center;
+          }
+        }
+      </style>
+
+    </section><!-- End Professional Experience Section -->
 <section id="education" class="Education section"></section>
         <div class="current-studies">
             <h3>🎓 Masters</h3>
@@ -325,74 +1474,303 @@
 
     </section><!-- /Skills Section -->
 
-    <!-- Resume Section -->
-    <section id="Educational projects" class="Educational projects section">
+    <!-- Educational Projects Section -->
+    <section id="Educational projects" class="educational-projects section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Educational Projects</h2>
-        <h6><p class="fst-italic py-3" style="font-family: Verdana, sans-serif;">
-          Passionate Full Stack Developer with expertise in Python, Java, PHP, JavaScript, and modern web technologies. Developed scalable applications, including an e-commerce platform and a data visualization dashboard. Proficient in MySQL, PostgreSQL, and MongoDB, with strong problem-solving and debugging skills. Completed an M.Sc in Management with Data Analytics from BPP University, London, and a B.Sc in Computer Science. Adept at collaborating with cross-functional teams to deliver high-quality solutions.  
-        </p></h6>
-        
+        <p>Showcasing innovative projects that demonstrate my technical expertise and problem-solving abilities. Each project represents a unique challenge and solution in full-stack development.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
-
-        <div class="row">
-
+        <div class="row gy-5">
+          
+          <!-- Project 1 -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title"></h3>
-             <div class="resume-item">
-              <h4> Employee Leave Management System Using PHP and MY SQL.</h4>
-              
-              <ul>
-                <li> Developed a Robust Leave Management System: Designed and implemented a web-based application using PHP and MySQL to streamline employee leave requests and approvals.</li>
-                <li> Automated Leave Tracking & Notifications: Integrated real-time leave balance tracking, automated email notifications, and admin approval workflows for efficient management.</li>
-                <li>  Enhanced Security & User Roles: Implemented role-based access control (Admin, Manager, Employee) to ensure data security and proper access permissions.</li>
-                <li>Comprehensive Reporting & Analytics: Developed detailed reports and dashboards to analyze leave trends, helping management make data-driven decisions.</li>
-              </ul>
-              
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="bi bi-people-fill"></i>
+                </div>
+                <div class="project-badge">PHP & MySQL</div>
+              </div>
+              <div class="project-content">
+                <h3>Employee Leave Management System</h3>
+                <p class="project-description">
+                  A comprehensive web-based application designed to streamline employee leave management with automated workflows and real-time tracking.
+                </p>
+                <div class="project-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Robust leave request and approval system</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Automated email notifications and tracking</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Role-based access control (Admin, Manager, Employee)</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Comprehensive reporting and analytics dashboard</span>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">Bootstrap</span>
+                </div>
+              </div>
             </div>
-
           </div>
 
+          <!-- Project 2 -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            
-            <div class="resume-item">
-              <h4> E-commerce Website Development</h4>
-              <h5></h5>
-              <p><em></em></p>
-              <ul>
-                <li> Developed a full-stack e-commerce platform using Python, Flask, MySQL, and JavaScript.</li>
-                <li> Implemented user authentication, product catalog, shopping cart, and payment gateway integration.</li>
-                <li> Optimized database queries to improve site performance and reduce response time.</li>
-                <li>Deployed the application on a cloud server to ensure scalability and high availability.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="bi bi-cart-fill"></i>
+                </div>
+                <div class="project-badge">Python & Flask</div>
+              </div>
+              <div class="project-content">
+                <h3>E-commerce Platform</h3>
+                <p class="project-description">
+                  A full-stack e-commerce solution with complete shopping experience, payment integration, and scalable architecture.
+                </p>
+                <div class="project-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>User authentication and product catalog</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Shopping cart and payment gateway integration</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Optimized database queries for performance</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Cloud deployment for scalability</span>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Flask</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <h3 class="resume-title"></h3>
-            <div class="resume-item">
-              <h4>Data Visualization Dashboard</h4>
-              <ul>
-                <li> Built an interactive dashboard using Python, Pandas, and Matplotlib to analyze business data.</li>
-                <li>  Integrated real-time data updates and visual insights to aid in decision-making.</li>
-                <li>  Deployed the dashboard on a cloud-based server for accessibility and scalability.</li>
-                <li>Optimized Performance & User Experience: Implemented efficient data processing techniques and an intuitive UI to ensure smooth interactions and quick insights.</li>
-              </ul>
-              
-            </div><!-- Edn Resume Item -->
-
-            
-           
-
+          <!-- Project 3 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="bi bi-graph-up"></i>
+                </div>
+                <div class="project-badge">Data Analytics</div>
+              </div>
+              <div class="project-content">
+                <h3>Data Visualization Dashboard</h3>
+                <p class="project-description">
+                  An interactive business intelligence dashboard providing real-time insights and data-driven decision support.
+                </p>
+                <div class="project-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Interactive charts and visualizations</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Real-time data updates and insights</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Cloud-based deployment for accessibility</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Optimized performance and intuitive UI</span>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Pandas</span>
+                  <span class="tech-tag">Matplotlib</span>
+                  <span class="tech-tag">Flask</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
-
       </div>
 
-    </section><!-- /Resume Section -->
+      <style>
+        .educational-projects {
+          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          padding: 5rem 0;
+        }
+
+        .educational-projects .section-title h2 {
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .educational-projects .section-title p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--text-muted);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .project-card {
+          background: var(--surface-color);
+          border-radius: 20px;
+          padding: 2.5rem;
+          box-shadow: var(--shadow-light);
+          transition: all 0.3s ease;
+          border: 1px solid var(--border-color);
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .project-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--accent-gradient);
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--shadow-heavy);
+        }
+
+        .project-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .project-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+          width: 60px;
+          height: 60px;
+          background: var(--accent-gradient);
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.5rem;
+          box-shadow: var(--shadow-medium);
+        }
+
+        .project-badge {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          font-family: var(--nav-font);
+        }
+
+        .project-content h3 {
+          font-family: var(--heading-font);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--heading-color);
+          margin-bottom: 1rem;
+        }
+
+        .project-description {
+          font-family: var(--body-font);
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--text-muted);
+          margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+          margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0.75rem;
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: var(--default-color);
+        }
+
+        .feature-item i {
+          color: var(--accent-color);
+          margin-right: 0.75rem;
+          font-size: 1rem;
+          flex-shrink: 0;
+        }
+
+        .project-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .tech-tag {
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          color: var(--accent-color);
+          padding: 0.4rem 0.8rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          font-family: var(--nav-font);
+          border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .project-card {
+            padding: 2rem;
+          }
+          
+          .project-content h3 {
+            font-size: 1.3rem;
+          }
+          
+          .project-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+          }
+        }
+      </style>
+
+    </section><!-- End Educational Projects Section -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section light-background">
@@ -411,11 +1789,176 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <h6><p class="fst-italic py-3" style="font-family: Verdana, sans-serif;">
-          I am a highly motivated Full Stack Developer with expertise in Python, Java, PHP, and JavaScript, specializing in building scalable web applications and data-driven solutions. With a strong foundation in backend and frontend technologies, I excel in problem-solving, debugging, and optimizing performance. Passionate about leveraging data analytics for informed decision-making, I enjoy collaborating with teams to develop innovative software solutions. Currently pursuing my M.Sc in Management with Data Analytics, I am eager to contribute my technical skills to impactful projects.
-        </p></h6>
-
+        <p>I am a highly motivated Full Stack Developer with expertise in Python, Java, PHP, and JavaScript, specializing in building scalable web applications and data-driven solutions.</p>
       </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="about-content-wrapper">
+          
+          <!-- About Description -->
+          <div class="about-description-section">
+            <p class="about-text">
+              With a strong foundation in backend and frontend technologies, I excel in problem-solving, debugging, and optimizing performance. Passionate about leveraging data analytics for informed decision-making, I enjoy collaborating with teams to develop innovative software solutions. Currently pursuing my M.Sc in Management with Data Analytics, I am eager to contribute my technical skills to impactful projects.
+            </p>
+          </div>
+
+          <!-- Core Strengths Card -->
+          <div class="core-strengths-card">
+            <h3 class="strengths-title">Core Strengths</h3>
+            <div class="strengths-grid">
+              <div class="strength-category">
+                <h4><i class="bi bi-gear-fill"></i> Technical Excellence</h4>
+                <ul>
+                  <li>Problem-solving and analytical thinking</li>
+                  <li>Agile development and team collaboration</li>
+                  <li>Performance optimization and debugging</li>
+                  <li>Data-driven decision making and analytics</li>
+                </ul>
+              </div>
+              
+              <div class="strength-category">
+                <h4><i class="bi bi-people-fill"></i> Problem Solving Team Player</h4>
+                <ul>
+                  <li>Collaborative problem-solving approach</li>
+                  <li>Effective team communication</li>
+                  <li>Cross-functional team coordination</li>
+                  <li>Mentoring and knowledge sharing</li>
+                </ul>
+              </div>
+              
+              <div class="strength-category">
+                <h4><i class="bi bi-mortarboard-fill"></i> Education & Vision</h4>
+                <ul>
+                  <li>Currently pursuing M.Sc in Management with Data Analytics at BPP University, London</li>
+                  <li>Bachelor's degree in Computer Science with strong foundation in programming fundamentals</li>
+                  <li>Passionate about AI-powered development and cutting-edge technologies</li>
+                  <li>Committed to delivering innovative solutions that make real-world impact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        .about-content-wrapper {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .about-description-section {
+          margin-bottom: 3rem;
+          text-align: center;
+        }
+
+        .about-text {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: var(--default-color);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .core-strengths-card {
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+          border: 1px solid rgba(102, 126, 234, 0.1);
+          border-radius: 20px;
+          padding: 2.5rem;
+          margin: 2rem 0;
+          box-shadow: var(--shadow-light);
+        }
+
+        .strengths-title {
+          font-family: var(--heading-font);
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--heading-color);
+          margin-bottom: 2rem;
+          text-align: center;
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .strengths-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        .strength-category {
+          background: var(--surface-color);
+          border-radius: 15px;
+          padding: 1.5rem;
+          box-shadow: var(--shadow-light);
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+        }
+
+        .strength-category:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-medium);
+        }
+
+        .strength-category h4 {
+          font-family: var(--heading-font);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .strength-category h4 i {
+          color: var(--accent-color);
+          font-size: 1.2rem;
+        }
+
+        .strength-category ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .strength-category ul li {
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: var(--default-color);
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .strength-category ul li::before {
+          content: '•';
+          color: var(--accent-color);
+          font-weight: bold;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+        @media (max-width: 768px) {
+          .strengths-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          
+          .core-strengths-card {
+            padding: 2rem;
+          }
+          
+          .strengths-title {
+            font-size: 1.8rem;
+          }
+        }
+      </style>
     
     
 
