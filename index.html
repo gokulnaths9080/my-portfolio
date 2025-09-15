@@ -77,8 +77,241 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      color: var(--gray-800);
-      background: var(--white);
+      color: #e2e8f0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d3748 50%, #1a1a1a 75%, #0a0a0a 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      padding-top: 80px; /* Add padding for fixed header */
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Top Navigation Styles */
+    .header-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--dark-gradient);
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      border-radius: 0 0 25px 25px;
+      margin: 0 1rem;
+      width: calc(100% - 2rem);
+      backdrop-filter: blur(10px);
+      height: 80px;
+      overflow: hidden;
+    }
+
+    .header-top:hover {
+      height: auto;
+      min-height: 80px;
+    }
+
+    .header-top.scrolled {
+      border-radius: 0 0 15px 15px;
+      margin: 0 0.5rem;
+      width: calc(100% - 1rem);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-top .navbar {
+      padding: 1rem 0;
+    }
+
+    .header-top .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .header-top .navbar-brand:hover {
+      color: var(--white);
+      transform: scale(1.05);
+    }
+
+    .profile-img-small {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .brand-text {
+      font-family: var(--heading-font);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .header-top .navbar-nav {
+      gap: 0.5rem;
+    }
+
+    .header-top .nav-link {
+      color: var(--white);
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-top .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.6);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .header-top .nav-link:hover::before,
+    .header-top .nav-link.active::before {
+      left: 0;
+    }
+
+    .header-top .nav-link:hover,
+    .header-top .nav-link.active {
+      color: var(--white);
+      background: rgba(26, 26, 26, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .header-top .nav-link i {
+      font-size: 1rem;
+    }
+
+    .header-top .social-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .header-top .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(26, 26, 26, 0.6);
+      color: var(--white);
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-top .social-link:hover {
+      background: var(--primary-gradient);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .header-top .social-link i {
+      font-size: 1rem;
+    }
+
+    .header-top .navbar-toggler {
+      display: none;
+    }
+
+    .header-top .navbar-collapse {
+      background: rgba(0, 0, 0, 0.95);
+      border-radius: var(--radius-lg);
+      margin-top: 1rem;
+      padding: 1rem;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .header-top:hover .navbar-collapse {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 991px) {
+      .header-top {
+        border-radius: 0 0 20px 20px;
+        margin: 0 0.5rem;
+        width: calc(100% - 1rem);
+        height: auto;
+        overflow: visible;
+      }
+
+      .header-top .navbar-toggler {
+        display: block;
+      }
+
+      .header-top .navbar-collapse {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .header-top .navbar-nav {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .header-top .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-md);
+      }
+
+      .header-top .social-links {
+        justify-content: center;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* Adjust main content for top navigation */
+    .main {
+      margin-left: 0;
+      width: 100%;
     }
 
     /* Header Redesign */
@@ -109,7 +342,7 @@
     }
 
     .header .social-links a {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(26, 26, 26, 0.6);
       border-radius: var(--radius-full);
       padding: 0.75rem;
       transition: all 0.3s ease;
@@ -160,6 +393,9 @@
       background: var(--primary-gradient);
       position: relative;
       overflow: hidden;
+      border-radius: 0 0 50px 50px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .hero::before {
@@ -217,7 +453,7 @@
     }
 
     .btn-primary {
-      background: var(--white);
+      background: #1a1a1a;
       color: var(--primary-color);
       box-shadow: var(--shadow-lg);
     }
@@ -235,7 +471,7 @@
     }
 
     .btn-outline:hover {
-      background: var(--white);
+      background: #1a1a1a;
       color: var(--primary-color);
       transform: translateY(-3px);
     }
@@ -263,7 +499,7 @@
 
     /* Cards Redesign */
     .card {
-      background: var(--white);
+      background: #1a1a1a;
       border-radius: var(--radius-xl);
       padding: 2rem;
       box-shadow: var(--shadow-md);
@@ -296,12 +532,12 @@
 
     /* Skills Section Redesign */
     .skills {
-      background: var(--light-gradient);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
       position: relative;
     }
 
     .skills .progress {
-      background: var(--white);
+      background: #1a1a1a;
       border-radius: var(--radius-xl);
       padding: 2rem;
       margin-bottom: 1.5rem;
@@ -370,11 +606,11 @@
 
     /* Experience Section Redesign */
     .experience {
-      background: var(--light-gradient);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
     }
 
     .experience-card {
-      background: var(--white);
+      background: #1a1a1a;
       border-radius: var(--radius-xl);
       padding: 2.5rem;
       box-shadow: var(--shadow-md);
@@ -434,7 +670,7 @@
 
     /* Project Cards Redesign */
     .project-card {
-      background: var(--white);
+      background: #1a1a1a;
       border-radius: var(--radius-xl);
       padding: 2.5rem;
       box-shadow: var(--shadow-md);
@@ -490,11 +726,11 @@
 
     /* Contact Section Redesign */
     .contact {
-      background: var(--light-gradient);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
     }
 
     .info-wrap {
-      background: var(--white);
+      background: #1a1a1a;
       border-radius: var(--radius-xl);
       padding: 2rem;
       box-shadow: var(--shadow-md);
@@ -534,7 +770,7 @@
       padding: 1rem;
       font-size: 1rem;
       transition: all 0.3s ease;
-      background: var(--white);
+      background: #1a1a1a;
     }
 
     .form-control:focus {
@@ -629,57 +865,79 @@
 
 <body class="index-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+  <!-- Top Navigation Header -->
+  <header id="header" class="header-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a class="navbar-brand" href="#hero">
+          <img src="assets/img/my-profile-img.jpg" alt="Gokulnath Settu" class="profile-img-small">
+          <span class="brand-text">GOKULNATH SETTU</span>
+        </a>
 
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
-    </div>
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">GOKULNATH SETTU</h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/gokulnath-settu-3b0b922a3/" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/gokulnaths9080"><i class="bi bi-github" target="_blank"></i></a>
-      <a href="tel:+44 7903514713" class="phone"><i class="bi bi-telephone" target="_blank"></i></a>
-      <a href="mailto:gokulnaths9080@gmail.com" class="email"><i class="bi bi-envelope"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#experience"><i class="bi bi-briefcase navicon"></i> Experience</a></li>
-        <li><a href="#education"><i class="bi bi-award navicon"></i> Education</a></li>
-        <li><a href="#Educational projects"><i class="bi bi-file-earmark-text navicon"></i> Educational projects</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        
-        <!--<li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#hero">
+                <i class="bi bi-house"></i> Home
+              </a>
             </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">
+                <i class="bi bi-briefcase"></i> Experience
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">
+                <i class="bi bi-award"></i> Education
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">
+                <i class="bi bi-gear"></i> Skills
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">
+                <i class="bi bi-file-earmark-text"></i> Projects
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">
+                <i class="bi bi-person"></i> About
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">
+                <i class="bi bi-envelope"></i> Contact
+              </a>
+            </li>
           </ul>
-        </li>-->
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
-    </nav>
 
+          <!-- Social Links -->
+          <div class="social-links ms-3">
+            <a href="https://www.linkedin.com/in/gokulnath-settu-3b0b922a3/" target="_blank" class="social-link">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/gokulnaths9080" target="_blank" class="social-link">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="tel:+447903514713" class="social-link">
+              <i class="bi bi-telephone"></i>
+            </a>
+            <a href="mailto:gokulnaths9080@gmail.com" class="social-link">
+              <i class="bi bi-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main class="main">
@@ -692,10 +950,14 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="hero-content">
           <h1 class="hero-title">Gokulnath Settu</h1>
-          <p class="hero-subtitle">Full Stack Developer & Creative Technologist</p>
+          <p class="hero-subtitle">Full Stack Developer & Data Analytics Specialist</p>
           <p class="hero-description" id="premiumText"></p>
           <div class="hero-cta">
             <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="btn btn-primary">
+              <i class="bi bi-download"></i>
+              Download Resume
+            </a>
           </div>
         </div>
       </div>
@@ -745,6 +1007,7 @@
           gap: 1.5rem;
           justify-content: flex-start;
           flex-wrap: wrap;
+          align-items: center;
         }
 
         .btn {
@@ -758,6 +1021,15 @@
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
+        }
+
+        .btn i {
+          font-size: 1.1rem;
+          transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+          transform: translateY(-2px);
         }
 
         .btn-primary {
@@ -785,6 +1057,10 @@
         }
 
         @media (max-width: 768px) {
+          .hero {
+            border-radius: 0 0 30px 30px;
+          }
+          
           .hero-title {
             font-size: 2.5rem;
           }
@@ -805,7 +1081,7 @@
       </style>
 
       <script>
-        const text = "Crafting elegant digital experiences through innovative code and creative design.";
+        const text = "Building scalable web applications and data-driven solutions with cutting-edge technologies.";
         const el = document.getElementById("premiumText");
 
         let i = 0;
@@ -854,24 +1130,17 @@
           </div>
           <div class="col-lg-8 content">
             <div class="about-content">
-              <h2 class="about-title">Full Stack Developer & Creative Technologist</h2>
+              <h2 class="about-title">Full Stack Developer & Data Analytics Specialist</h2>
               <p class="about-description">
-                I am a passionate Full Stack Developer specializing in building scalable, high-performing applications using cutting-edge technologies including Python, Java, PHP, and JavaScript. With expertise spanning both frontend and backend development, I create seamless digital experiences that bridge the gap between innovative concepts and robust technical implementation.
+                Full Stack Developer with a proven track record of building scalable web applications using Python, Java, PHP, and JavaScript. Known for enhancing team synergy through Agile methodologies and mentoring junior developers, while optimizing performance to boost user satisfaction. Passionate about leveraging cutting-edge technologies to deliver high-quality software solutions.
               </p>
               <p class="about-description">
-                My approach combines creative problem-solving with systematic engineering to deliver solutions that not only meet current requirements but scale for future growth. I envision a future where technology seamlessly integrates with business processes to create more efficient, intelligent, and user-friendly digital ecosystems.
+                Currently pursuing Master of Science in Management with Data Analytics at BPP University, London, I combine technical expertise with data-driven insights to create innovative solutions. My approach focuses on building robust applications that not only meet current requirements but scale for future growth and deliver measurable business value.
               </p>
                            <div class="about-highlight">
                <span class="highlight-text">Your ideas, my code!</span> I believe in transforming visionary concepts into tangible, user-centric applications that make a real-world impact.
              </div>
              
-             <div class="about-cta">
-               <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="resume-download-btn">
-                 <i class="bi bi-download"></i>
-                 <span>Download Resume</span>
-                 <div class="btn-glow"></div>
-               </a>
-             </div>
            </div>
          </div>
        </div>
@@ -996,7 +1265,7 @@
              left: -100%;
              width: 100%;
              height: 100%;
-             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+             background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
              transition: left 0.5s ease;
            }
 
@@ -1048,7 +1317,7 @@
 
       
     <!-- Professional Experience Section -->
-    <section id="experience" class="experience section light-background">
+    <section id="experience" class="experience section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1057,10 +1326,153 @@
       </div><!-- End Section Title -->
 
       <div class="container">
-        <div class="experience-timeline">
+        <div class="row experience-grid">
           
-          <!-- Experience Item -->
+          <!-- Experience Item 1 - Swift Ride -->
+          <div class="col-lg-4 col-md-6 mb-4">
           <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-icon">
+                  <i class="bi bi-laptop"></i>
+                </div>
+                <div class="experience-meta">
+                  <h3 class="job-title">Python Full Stack Developer Intern</h3>
+                  <h4 class="company-name">Swift Ride, Vabyam Technology</h4>
+                  <div class="experience-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      November 2021 - March 2022
+                    </span>
+                    <span class="location">
+                      <i class="bi bi-geo-alt"></i>
+                      Bangalore
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-content">
+                <div class="experience-description">
+                  <p>Developed comprehensive backend system using Django framework with PostgreSQL database and Redis caching for ride-sharing platform.</p>
+                </div>
+                
+                <div class="experience-achievements">
+                  <h5>Key Achievements</h5>
+                  <div class="achievement-list">
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Built scalable REST APIs supporting ride matching, user authentication, and real-time location tracking</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Implemented microservices architecture using Flask for payment processing and notification services</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Optimized database queries reducing response times by 60% and supporting 1000+ concurrent users</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Deployed on AWS using EC2, RDS, and S3 with CI/CD pipelines for automated testing and deployment</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Integrated third-party APIs for maps, payments, and SMS notifications with comprehensive error handling</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="experience-skills">
+                  <h5>Technologies & Skills</h5>
+                  <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">Microservices</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 - Ginger Media Group -->
+          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-icon">
+                  <i class="bi bi-briefcase"></i>
+                </div>
+                <div class="experience-meta">
+                  <h3 class="job-title">Full Stack Developer Intern</h3>
+                  <h4 class="company-name">Ginger Media Group (GOGIG)</h4>
+                  <div class="experience-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      March 2022 - July 2022
+                    </span>
+                    <span class="location">
+                      <i class="bi bi-geo-alt"></i>
+                      Bangalore
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-content">
+                <div class="experience-description">
+                  <p>Built end-to-end web application using React.js frontend and Node.js serverless backend architecture for freelance job platform.</p>
+                </div>
+                
+                <div class="experience-achievements">
+                  <h5>Key Achievements</h5>
+                  <div class="achievement-list">
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Designed and integrated job search, user authentication, and project assignment functionality</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Implemented scalable database design using MySQL with Knex.js for structured data management</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Developed responsive frontend components with modern UI/UX design principles</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Implemented secure user authentication and authorization systems</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="experience-skills">
+                  <h5>Technologies & Skills</h5>
+                  <div class="skills-grid">
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Knex.js</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Serverless</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Authentication</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 3 - XESS Tech Link -->
+          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="experience-item" data-aos="fade-up" data-aos-delay="300">
             <div class="experience-card">
               <div class="experience-header">
                 <div class="experience-icon">
@@ -1092,27 +1504,31 @@
                   <div class="achievement-list">
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Built and maintained robust web applications using PHP, MySQL, HTML, CSS, and JavaScript</span>
+                      <span>Built and maintained web applications using PHP, MySQL, HTML, CSS, and JavaScript</span>
                     </div>
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Collaborated with cross-functional teams in Agile environment with daily standups</span>
+                      <span>Collaborated with cross-functional teams in an Agile environment</span>
                     </div>
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Handled both front-end UI development and back-end server logic efficiently</span>
+                      <span>Handled both front-end and back-end tasks efficiently</span>
                     </div>
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Contributed to debugging, testing, and deployment processes ensuring 99% uptime</span>
+                      <span>Enhanced application performance by optimizing database queries, resulting in faster load times and improved user satisfaction</span>
                     </div>
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Optimized database queries and application performance, reducing page load times by 40%</span>
+                      <span>Conducted thorough code reviews, identifying and resolving critical bugs, leading to a significant reduction in post-deployment issues</span>
                     </div>
                     <div class="achievement-item">
                       <i class="bi bi-check-circle-fill"></i>
-                      <span>Participated in code reviews and maintained coding standards across the development team</span>
+                      <span>Fostered team synergy by leading Agile ceremonies, improving project transparency and accelerating delivery timelines</span>
+                    </div>
+                    <div class="achievement-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Actively mentored junior developers, enhancing their coding skills and fostering a collaborative learning environment</span>
                     </div>
                   </div>
                 </div>
@@ -1129,6 +1545,7 @@
                     <span class="skill-tag">Problem Solving</span>
                     <span class="skill-tag">Debugging</span>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1139,8 +1556,12 @@
 
       <style>
         .experience {
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          background: rgba(26, 26, 26, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 30px;
+          margin: 2rem 1rem;
           padding: 5rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .experience .section-title h2 {
@@ -1159,25 +1580,27 @@
           margin: 0 auto;
         }
 
-        .experience-timeline {
-          max-width: 900px;
-          margin: 0 auto;
-          position: relative;
+        .experience-grid {
+          margin: 0;
         }
 
         .experience-item {
-          margin-bottom: 3rem;
+          margin-bottom: 0;
+          height: 100%;
         }
 
         .experience-card {
-          background: var(--surface-color);
+          background: #1a1a1a;
           border-radius: 20px;
-          padding: 2.5rem;
+          padding: 2rem;
           box-shadow: var(--shadow-light);
           transition: all 0.3s ease;
-          border: 1px solid var(--border-color);
+          border: 1px solid #2d3748;
           position: relative;
           overflow: hidden;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
         }
 
         .experience-card::before {
@@ -1254,7 +1677,7 @@
           gap: 0.5rem;
           font-family: var(--body-font);
           font-size: 0.95rem;
-          color: #000000;
+          color: var(--default-color);
         }
 
         .duration i, .location i {
@@ -1373,25 +1796,387 @@
             justify-content: center;
           }
         }
+
+        @media (max-width: 992px) {
+          .experience-grid .col-lg-4 {
+            margin-bottom: 2rem;
+          }
+        }
       </style>
 
     </section><!-- End Professional Experience Section -->
-<section id="education" class="Education section"></section>
-        <div class="current-studies">
-            <h3>🎓 Masters</h3>
-            <p>
-                <strong>Master of Science - Management with Data Analytics</strong><br>
-                BPP University, London, UK (2023-2025)<br>
-                Expanding expertise in data-driven decision making, machine learning, and business intelligence.
-            </p>
-            <h3>🎓 Bachelors</h3>
-            <p>
-                <strong>Bachelor of Science - Computer Science</strong><br>
-                Erode Arts and Science College, Erode, Tamil Nadu, India (2019-2022)<br>
-                Built a strong foundation in programming, data structures, algorithms, and database systems.
-            </p>
+    <!-- Education Section -->
+    <section id="education" class="education section dark-background">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Education</h2>
+        <p>Building a strong foundation in computer science and advancing expertise in data analytics and management</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row education-grid">
+          
+          <!-- Education Item 1 - Masters -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="education-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="education-card">
+              <div class="education-header">
+                <div class="education-icon">
+                  <i class="bi bi-mortarboard"></i>
+                </div>
+                <div class="education-meta">
+                  <h3 class="degree-title">Master of Science - Management with Data Analytics</h3>
+                  <h4 class="institution-name">BPP University</h4>
+                  <div class="education-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      2023 - 2025
+                    </span>
+                    <span class="location">
+                      <i class="bi bi-geo-alt"></i>
+                      London, UK
+                    </span>
+                  </div>
         </div>
     </div>
+      
+              <div class="education-content">
+                <div class="education-description">
+                  <p>Currently pursuing advanced studies in management with specialization in data analytics, focusing on machine learning, business intelligence, and data-driven decision making.</p>
+                </div>
+                
+                <div class="education-focus">
+                  <h5>Key Focus Areas</h5>
+                  <div class="focus-list">
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Data Analytics and Business Intelligence</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Machine Learning and Statistical Modeling</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Management Principles and Strategic Decision Making</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Data Visualization and Reporting</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <!-- Education Item 2 - Bachelors -->
+          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="education-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="education-card">
+              <div class="education-header">
+                <div class="education-icon">
+                  <i class="bi bi-book"></i>
+                </div>
+                <div class="education-meta">
+                  <h3 class="degree-title">Bachelor of Science - Computer Science</h3>
+                  <h4 class="institution-name">Erode Arts and Science College</h4>
+                  <div class="education-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      2019 - 2022
+                    </span>
+                    <span class="location">
+                      <i class="bi bi-geo-alt"></i>
+                      Tamil Nadu, India
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="education-content">
+                <div class="education-description">
+                  <p>Built a strong foundation in computer science fundamentals including programming, data structures, algorithms, and database systems.</p>
+                </div>
+                
+                <div class="education-focus">
+                  <h5>Key Focus Areas</h5>
+                  <div class="focus-list">
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Programming Languages (C++, Java, Python)</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Data Structures and Algorithms</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Database Management Systems</span>
+                    </div>
+                    <div class="focus-item">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span>Software Engineering Principles</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <!-- Education Item 3 - Higher Secondary -->
+          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="education-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="education-card">
+              <div class="education-header">
+                <div class="education-icon">
+                  <i class="bi bi-award"></i>
+                </div>
+                <div class="education-meta">
+                  <h3 class="degree-title">Higher Secondary</h3>
+                  <h4 class="institution-name">PSG Matric Higher Secondary School</h4>
+                  <div class="education-details">
+                    <span class="duration">
+                      <i class="bi bi-calendar3"></i>
+                      2016 - 2017
+                    </span>
+                    <span class="location">
+                      <i class="bi bi-geo-alt"></i>
+                      Tamil Nadu, India
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="education-content">
+                <div class="education-description">
+                  <p>Completed higher secondary education with focus on science and mathematics, laying the groundwork for computer science studies.</p>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        .education {
+          background: rgba(26, 26, 26, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 30px;
+          margin: 2rem 1rem;
+          padding: 5rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .education .section-title h2 {
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .education .section-title p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--text-muted);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .education-grid {
+          margin: 0;
+        }
+
+        .education-item {
+          margin-bottom: 0;
+          height: 100%;
+        }
+
+        .education-card {
+          background: var(--surface-color);
+          border-radius: 20px;
+          padding: 2rem;
+          box-shadow: var(--shadow-light);
+          transition: all 0.3s ease;
+          border: 1px solid var(--border-color);
+          position: relative;
+          overflow: hidden;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .education-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--accent-gradient);
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-heavy);
+        }
+
+        .education-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .education-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .education-icon {
+          width: 70px;
+          height: 70px;
+          background: var(--accent-gradient);
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.8rem;
+          box-shadow: var(--shadow-medium);
+          flex-shrink: 0;
+        }
+
+        .education-meta {
+          flex: 1;
+        }
+
+        .degree-title {
+          font-family: var(--heading-font);
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: var(--heading-color);
+          margin-bottom: 0.5rem;
+        }
+
+        .institution-name {
+          font-family: var(--nav-font);
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: var(--accent-color);
+          margin-bottom: 1rem;
+        }
+
+        .education-details {
+          display: flex;
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+
+        .duration, .location {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: var(--default-color);
+        }
+
+        .duration i, .location i {
+          color: var(--accent-color);
+          font-size: 1rem;
+        }
+
+        .education-content {
+          margin-top: 1.5rem;
+        }
+
+        .education-description {
+          margin-bottom: 2rem;
+        }
+
+        .education-description p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--default-color);
+          font-weight: 500;
+        }
+
+        .education-focus {
+          margin-top: 2rem;
+        }
+
+        .education-focus h5 {
+          font-family: var(--heading-font);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 1rem;
+        }
+
+        .focus-list {
+          display: grid;
+          gap: 0.75rem;
+        }
+
+        .focus-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          font-family: var(--body-font);
+          font-size: 0.95rem;
+          color: var(--default-color);
+          line-height: 1.5;
+        }
+
+        .focus-item i {
+          color: var(--accent-color);
+          font-size: 1rem;
+          margin-top: 0.1rem;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+          .education-card {
+            padding: 1.5rem;
+          }
+          
+          .education-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          
+          .education-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+          }
+          
+          .degree-title {
+            font-size: 1.5rem;
+          }
+          
+          .education-details {
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 992px) {
+          .education-grid .col-lg-4 {
+            margin-bottom: 2rem;
+          }
+        }
+      </style>
+
+    </section><!-- End Education Section -->
       
       
 
@@ -1399,153 +2184,701 @@
 
     
     <!-- Skills Section -->
-    <section id="skills" class="skills section light-background">
+    <section id="skills" class="skills section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <pre style="font-size: 18px; font-weight: bold;">  
-          ✅ Full Stack Development – Python, Java, PHP, JavaScript  
-          ✅ Database Management – MySQL, PostgreSQL, MongoDB  
-          ✅ Problem-Solving – Analytical and efficient debugging skills  
-          ✅ Agile Development – Adaptable and collaborative workflow  
-          ✅ Cloud Computing – Deploying scalable and secure applications  
-        </pre>
-
+        <h2>Technical Skills</h2>
+        <p>Comprehensive expertise across full-stack development, data analytics, and cloud technologies</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Python</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="row skills-content">
+          
+          <!-- Programming Languages -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Programming Languages</h4>
               </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Java</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-percentage">95%</span>
               </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="95"></div>
               </div>
-            </div><!-- End Skills Item -->
-
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">TypeScript</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Java</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">SQL</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="88"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">C++</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Java Script</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          <!-- Frontend Technologies -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Frontend Technologies</h4>
               </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>React.JS</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">React.js</span>
+                    <span class="skill-percentage">95%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="95"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Next.js</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Angular</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Redux</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Tailwind CSS</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Bootstrap</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="88"></div>
+                  </div>
+                </div>
               </div>
-            </div><!-- End Skills Item -->
+            </div>
+          </div>
 
-            <div class="progress">
-              <span class="skill"><span>MySQL/PostgreSQL</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          <!-- Backend Technologies -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Backend Technologies</h4>
               </div>
-            </div><!-- End Skills Item -->
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Django</span>
+                    <span class="skill-percentage">95%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="95"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Flask</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">FastAPI</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Node.js</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="88"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">REST APIs</span>
+                    <span class="skill-percentage">92%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="92"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">GraphQL</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <!-- Databases -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Databases</h4>
+              </div>
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">PostgreSQL</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">MongoDB</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">MySQL</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="88"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Redis</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Database Optimization</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cloud & DevOps -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Cloud & DevOps</h4>
+              </div>
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">AWS (Lambda, EC2, S3, RDS)</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Docker</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Kubernetes</span>
+                    <span class="skill-percentage">75%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="75"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">CI/CD</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Git</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="90"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specialized Skills -->
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="skills-category premium-card">
+              <div class="skills-header">
+                <h4 class="skills-category-title">Specialized Skills</h4>
+              </div>
+              <div class="skills-list">
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Machine Learning</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Computer Vision</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Medical AI</span>
+                    <span class="skill-percentage">75%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="75"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">Data Science</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item-premium">
+                  <div class="skill-info">
+                    <span class="skill-name">MLOps</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-width="80"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
 
       </div>
 
+      <style>
+        .skills {
+          background: rgba(26, 26, 26, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 30px;
+          margin: 2rem 1rem;
+          padding: 5rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .skills .section-title h2 {
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .skills .section-title p {
+          font-family: var(--body-font);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--text-muted);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .premium-card {
+          background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(45, 55, 72, 0.6) 100%);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 24px;
+          padding: 2.5rem;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          height: 100%;
+        }
+
+        .premium-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--accent-gradient);
+          transform: scaleX(0);
+          transition: transform 0.4s ease;
+        }
+
+        .premium-card:hover {
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+          border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .premium-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .skills-header {
+          margin-bottom: 2rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          text-align: center;
+        }
+
+        .skills-category-title {
+          font-family: var(--heading-font);
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: var(--heading-color);
+          margin: 0;
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .skills-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .skill-item-premium {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          padding: 1rem;
+          background: rgba(26, 26, 26, 0.6);
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .skill-item-premium:hover {
+          background: rgba(26, 26, 26, 0.8);
+          border-color: rgba(102, 126, 234, 0.2);
+          transform: translateX(5px);
+        }
+
+        .skill-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .skill-name {
+          font-family: var(--body-font);
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--heading-color);
+          letter-spacing: 0.02em;
+        }
+
+        .skill-percentage {
+          font-family: var(--heading-font);
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--accent-color);
+          background: rgba(102, 126, 234, 0.1);
+          padding: 0.25rem 0.75rem;
+          border-radius: 20px;
+          border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-progress {
+          background: rgba(26, 26, 26, 0.6);
+          height: 10px;
+          border-radius: 5px;
+          overflow: hidden;
+          position: relative;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-bar {
+          height: 100%;
+          background: var(--accent-gradient);
+          border-radius: 5px;
+          transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+          width: 0;
+          position: relative;
+          box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-bar::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+          animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        .skill-item-premium[data-aos] .skill-bar {
+          animation: fillSkillBar 2s ease forwards;
+        }
+
+        @keyframes fillSkillBar {
+          from {
+            width: 0;
+          }
+          to {
+            width: var(--skill-width);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .premium-card {
+            padding: 2rem;
+          }
+          
+          .skills-header {
+            text-align: center;
+          }
+          
+          .skills-category-title {
+            font-size: 1.2rem;
+          }
+          
+          .skill-item-premium {
+            padding: 0.75rem;
+          }
+        }
+      </style>
+
     </section><!-- /Skills Section -->
 
     <!-- Educational Projects Section -->
-    <section id="Educational projects" class="educational-projects section light-background">
+    <section id="projects" class="educational-projects section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Educational Projects</h2>
-        <p>Showcasing innovative projects that demonstrate my technical expertise and problem-solving abilities. Each project represents a unique challenge and solution in full-stack development.</p>
+        <h2>Key Projects</h2>
+        <p>Showcasing innovative projects that demonstrate my technical expertise and problem-solving abilities. Each project represents a unique challenge and solution in full-stack development and data analytics.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
         <div class="row gy-5">
           
-          <!-- Project 1 -->
+          <!-- Project 1 - IEEE Published Project -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="project-card">
               <div class="project-header">
                 <div class="project-icon">
-                  <i class="bi bi-people-fill"></i>
+                  <i class="bi bi-graph-up-arrow"></i>
                 </div>
-                <div class="project-badge">PHP & MySQL</div>
+                <div class="project-badge">IEEE Published</div>
               </div>
               <div class="project-content">
-                <h3>Employee Leave Management System</h3>
+                <h3>E-Commerce Recommendation Engine</h3>
                 <p class="project-description">
-                  A comprehensive web-based application designed to streamline employee leave management with automated workflows and real-time tracking.
+                  Built hybrid recommendation system combining collaborative and content-based filtering for e-commerce platforms. Published research paper in IEEE proceedings.
                 </p>
                 <div class="project-features">
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Robust leave request and approval system</span>
+                    <span>Achieved 67.5% precision and 71.5% recall with real-time user adaptation</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Automated email notifications and tracking</span>
+                    <span>Published research paper in IEEE proceedings (DOI: 10.1109/ICAIT61638.2024.10690425)</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Role-based access control (Admin, Manager, Employee)</span>
+                    <span>Hybrid approach combining collaborative and content-based filtering</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Comprehensive reporting and analytics dashboard</span>
+                    <span>Real-time user behavior analysis and recommendation updates</span>
                   </div>
                 </div>
                 <div class="project-tech">
-                  <span class="tech-tag">PHP</span>
-                  <span class="tech-tag">MySQL</span>
-                  <span class="tech-tag">JavaScript</span>
-                  <span class="tech-tag">Bootstrap</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Machine Learning</span>
+                  <span class="tech-tag">Statistical Modeling</span>
+                  <span class="tech-tag">Research</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Project 2 -->
+          <!-- Project 2 - AI Medical System -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="bi bi-heart-pulse"></i>
+                </div>
+                <div class="project-badge">MSc Dissertation</div>
+              </div>
+              <div class="project-content">
+                <h3>AI-Powered Pneumonia Detection System</h3>
+                <p class="project-description">
+                  Developed medical AI system comparing Vision Transformers vs CNNs for pneumonia detection using chest X-ray images with clinical interpretability.
+                </p>
+                <div class="project-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Achieved 94.2% accuracy on 112k+ chest X-ray images</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Comprehensive comparison of Vision Transformers vs CNNs</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Clinical interpretability and explainable AI features</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Deployed on AWS with Docker containerization</span>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">Computer Vision</span>
+                  <span class="tech-tag">AWS</span>
+                  <span class="tech-tag">Docker</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 - E-commerce Website -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="project-card">
               <div class="project-header">
                 <div class="project-icon">
                   <i class="bi bi-cart-fill"></i>
                 </div>
-                <div class="project-badge">Python & Flask</div>
+                <div class="project-badge">Full Stack</div>
               </div>
               <div class="project-content">
-                <h3>E-commerce Platform</h3>
+                <h3>E-Commerce Website Development</h3>
                 <p class="project-description">
-                  A full-stack e-commerce solution with complete shopping experience, payment integration, and scalable architecture.
+                  Developed a full-stack e-commerce platform using Python, Flask, MySQL, and JavaScript with complete shopping experience and payment integration.
                 </p>
                 <div class="project-features">
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>User authentication and product catalog</span>
+                    <span>User authentication and product catalog management</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
@@ -1553,11 +2886,11 @@
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Optimized database queries for performance</span>
+                    <span>Optimized database queries to improve site performance</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Cloud deployment for scalability</span>
+                    <span>Responsive design and modern UI/UX</span>
                   </div>
                 </div>
                 <div class="project-tech">
@@ -1570,8 +2903,8 @@
             </div>
           </div>
 
-          <!-- Project 3 -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <!-- Project 4 - Data Visualization Dashboard -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
             <div class="project-card">
               <div class="project-header">
                 <div class="project-icon">
@@ -1582,24 +2915,24 @@
               <div class="project-content">
                 <h3>Data Visualization Dashboard</h3>
                 <p class="project-description">
-                  An interactive business intelligence dashboard providing real-time insights and data-driven decision support.
+                  Built an interactive dashboard using Python, Pandas, and Matplotlib to analyze business data with real-time updates and visual insights.
                 </p>
                 <div class="project-features">
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Interactive charts and visualizations</span>
+                    <span>Interactive charts and visualizations for business insights</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Real-time data updates and insights</span>
+                    <span>Real-time data updates and visual insights for decision-making</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Cloud-based deployment for accessibility</span>
+                    <span>Cloud-based deployment for accessibility and scalability</span>
                   </div>
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <span>Optimized performance and intuitive UI</span>
+                    <span>Optimized performance and intuitive user interface</span>
                   </div>
                 </div>
                 <div class="project-tech">
@@ -1617,8 +2950,12 @@
 
       <style>
         .educational-projects {
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          background: rgba(26, 26, 26, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 30px;
+          margin: 2rem 1rem;
           padding: 5rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .educational-projects .section-title h2 {
@@ -1773,7 +3110,7 @@
     </section><!-- End Educational Projects Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section light-background">
+    <section id="portfolio" class="portfolio section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1784,7 +3121,7 @@
       </div><!-- End Section Title -->
       
 <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1842,6 +3179,15 @@
       </div>
 
       <style>
+        .about {
+          background: rgba(26, 26, 26, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 30px;
+          margin: 2rem 1rem;
+          padding: 5rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         .about-content-wrapper {
           max-width: 1200px;
           margin: 0 auto;
@@ -1945,6 +3291,11 @@
         }
 
         @media (max-width: 768px) {
+          .experience, .education, .skills, .educational-projects, .about {
+            margin: 1rem 0.5rem;
+            border-radius: 20px;
+          }
+          
           .strengths-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
@@ -1963,7 +3314,7 @@
     
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1982,7 +3333,7 @@
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Address</h3>
-                  <p> Ilford, UK</p>
+                  <p>153, Rushden Garden, Ilford, UK, IG5 0BL</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -2057,7 +3408,7 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  <div id="preloader" style="display: none;"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -2073,6 +3424,117 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Skills Animation Script -->
+  <script>
+    // Hide preloader immediately
+    document.addEventListener('DOMContentLoaded', function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.display = 'none';
+      }
+    });
+
+    // Premium Skills animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const skillBars = document.querySelectorAll('.skill-bar');
+      
+      const animateSkills = () => {
+        skillBars.forEach((bar, index) => {
+          const width = bar.getAttribute('data-width');
+          // Add staggered animation delay
+          setTimeout(() => {
+            bar.style.width = width + '%';
+          }, index * 100);
+        });
+      };
+
+      // Use Intersection Observer for better performance
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(animateSkills, 300);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      const skillsSection = document.querySelector('.skills');
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+    });
+
+    // Top Navigation Active Link Script
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section[id]');
+
+      function updateActiveNavLink() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // Update active link on scroll
+      window.addEventListener('scroll', updateActiveNavLink);
+      
+      // Update active link on page load
+      updateActiveNavLink();
+
+      // Smooth scrolling for navigation links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80; // Account for fixed header
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    // Fallback to hide preloader after 3 seconds
+    setTimeout(function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.display = 'none';
+      }
+    }, 3000);
+  </script>
+
+  <!-- Header scroll effect for curved corners -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.querySelector('.header-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+    });
+  </script>
 
 </body>
 

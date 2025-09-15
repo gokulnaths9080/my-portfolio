@@ -10,48 +10,63 @@
   "use strict";
 
   /**
-   * Header toggle
+   * Header toggle - Updated for top navigation
    */
   const headerToggleBtn = document.querySelector('.header-toggle');
 
   function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
+    const header = document.querySelector('#header');
+    if (header && header.classList.contains('header-show')) {
+      header.classList.toggle('header-show');
+    }
+    if (headerToggleBtn) {
+      headerToggleBtn.classList.toggle('bi-list');
+      headerToggleBtn.classList.toggle('bi-x');
+    }
   }
-  headerToggleBtn.addEventListener('click', headerToggle);
+  if (headerToggleBtn) {
+    headerToggleBtn.addEventListener('click', headerToggle);
+  }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Hide mobile nav on same-page/hash links - Updated for top navigation
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  document.querySelectorAll('.nav-link').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
+      const header = document.querySelector('#header');
+      if (header && header.classList.contains('header-show')) {
         headerToggle();
       }
     });
-
   });
 
   /**
-   * Toggle mobile nav dropdowns
+   * Toggle mobile nav dropdowns - Updated for top navigation
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
       e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      if (this.parentNode) {
+        this.parentNode.classList.toggle('active');
+        if (this.parentNode.nextElementSibling) {
+          this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+        }
+      }
       e.stopImmediatePropagation();
     });
   });
 
   /**
-   * Preloader
+   * Preloader - Updated to hide immediately
    */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
+    // Hide preloader immediately
+    preloader.style.display = 'none';
+    
+    // Also hide on window load as backup
     window.addEventListener('load', () => {
-      preloader.remove();
+      preloader.style.display = 'none';
     });
   }
 

@@ -8,35 +8,35 @@
 
 
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #2d3748; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #1a202c; /* Color for headings, subheadings and title throughout the website */
+  --background-color: #0a0a0a; /* Premium black background for the entire website, including individual sections */
+  --default-color: #e2e8f0; /* Light text color for readability on dark background */
+  --heading-color: #f8fafc; /* Light heading color for contrast against dark background */
   --accent-color: #667eea; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Premium gradient for accent elements */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --surface-color: #1a1a1a; /* Dark surface color for cards and elements on the dark background */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-  --text-muted: #718096; /* Muted text color for secondary information */
-  --border-color: #e2e8f0; /* Subtle border color */
-  --shadow-light: 0 1px 3px rgba(0,0,0,0.1); /* Light shadow for subtle depth */
-  --shadow-medium: 0 4px 6px rgba(0,0,0,0.1); /* Medium shadow for cards */
-  --shadow-heavy: 0 10px 25px rgba(0,0,0,0.15); /* Heavy shadow for emphasis */
+  --text-muted: #94a3b8; /* Muted text color for secondary information on dark background */
+  --border-color: #2d3748; /* Darker border color for dark theme */
+  --shadow-light: 0 1px 3px rgba(0,0,0,0.3); /* Light shadow for subtle depth on dark background */
+  --shadow-medium: 0 4px 6px rgba(0,0,0,0.3); /* Medium shadow for cards on dark background */
+  --shadow-heavy: 0 10px 25px rgba(0,0,0,0.4); /* Heavy shadow for emphasis on dark background */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #a8a9b4;  /* The default color of the main navmenu links */
+  --nav-color: #94a3b8;  /* The default color of the main navmenu links for dark theme */
   --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #040b14; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #040b14; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #a8a9b4; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-mobile-background-color: #0a0a0a; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #94a3b8; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f4fafd;
-  --surface-color: #ffffff;
+  --background-color: #1a1a1a;
+  --surface-color: #2d3748;
 }
 
 .dark-background {
@@ -709,19 +709,19 @@ pre {
 .resume-section {
   padding: 60px 20px;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #1a1a1a;
 }
 
 .resume-section h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #333;
+  color: #f8fafc;
 }
 
 .resume-section p {
   font-size: 1.1rem;
   margin-bottom: 20px;
-  color: #666;
+  color: #94a3b8;
 }
 
 .resume-download-btn {
@@ -826,10 +826,10 @@ pre {
         .experience-section {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(26, 26, 26, 0.95);
             border-radius: 20px;
             padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
         }
 
@@ -840,7 +840,7 @@ pre {
 
         .section-title {
             font-size: 2.5rem;
-            color: #2c3e50;
+            color: #f8fafc;
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
@@ -858,7 +858,7 @@ pre {
         }
 
         .section-subtitle {
-            color: #666;
+            color: #94a3b8;
             font-size: 1.1rem;
             font-weight: 300;
         }
@@ -895,10 +895,10 @@ pre {
 
         .timeline-content {
             flex: 1;
-            background: #fff;
+            background: #1a1a1a;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin: 0 2rem;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -906,7 +906,7 @@ pre {
 
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .timeline-item:nth-child(odd) .timeline-content::before {
@@ -917,7 +917,7 @@ pre {
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-left: 15px solid #fff;
+            border-left: 15px solid #1a1a1a;
             border-top: 15px solid transparent;
             border-bottom: 15px solid transparent;
         }
@@ -930,7 +930,7 @@ pre {
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-right: 15px solid #fff;
+            border-right: 15px solid #1a1a1a;
             border-top: 15px solid transparent;
             border-bottom: 15px solid transparent;
         }
@@ -943,13 +943,13 @@ pre {
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-            border: 4px solid #fff;
+            border: 4px solid #1a1a1a;
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
         }
 
         .job-title {
             font-size: 1.4rem;
-            color: #2c3e50;
+            color: #f8fafc;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -973,7 +973,7 @@ pre {
         }
 
         .location {
-            color: #666;
+            color: #94a3b8;
             font-style: italic;
             margin-bottom: 1rem;
         }
@@ -987,7 +987,7 @@ pre {
             position: relative;
             padding-left: 1.5rem;
             margin-bottom: 0.8rem;
-            color: #555;
+            color: #e2e8f0;
             line-height: 1.6;
         }
 
@@ -1182,7 +1182,7 @@ pre {
 # Portfolio Section
 --------------------------------------------------------------*/
 .portfolio {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
   padding: 5rem 0;
 }
 
