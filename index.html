@@ -121,13 +121,9 @@
       margin: 0 1rem;
       width: calc(100% - 2rem);
       backdrop-filter: blur(10px);
-      height: 80px;
-      overflow: hidden;
-    }
-
-    .header-top:hover {
       height: auto;
       min-height: 80px;
+      overflow: visible;
     }
 
     .header-top.scrolled {
@@ -258,17 +254,13 @@
       margin-top: 1rem;
       padding: 1rem;
       backdrop-filter: blur(10px);
-      opacity: 0;
-      transform: translateY(-20px);
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
-
-    .header-top:hover .navbar-collapse {
       opacity: 1;
       transform: translateY(0);
+      transition: all 0.3s ease;
       pointer-events: auto;
     }
+
+
 
     /* Mobile Navigation */
     @media (max-width: 991px) {
@@ -939,6 +931,7 @@
       </div>
     </nav>
   </header>
+
 
   <main class="main">
 
@@ -3526,6 +3519,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const header = document.querySelector('.header-top');
       
+      // Scroll functionality - only for styling changes
       window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
           header.classList.add('scrolled');
