@@ -1128,8 +1128,21 @@ pre {
 .skills .progress-bar {
   width: 1px;
   height: 10px;
-  transition: 0.9s;
   background-color: var(--accent-color);
+  transition: width 800ms ease-in-out;
+}
+
+/* Smooth hover elevation for premium skill cards */
+.skills .premium-card {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.skills .premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
 }
 
 /*--------------------------------------------------------------
