@@ -68,7 +68,6 @@ Passionate about leveraging **data analytics** for informed decision-making, I e
 ## 🚀 Key Projects
 
 ### 📦 E-Commerce Recommendation Engine
-> **IEEE Published** — DOI: [10.1109/ICAIT61638.2024.10690425](https://doi.org/10.1109/ICAIT61638.2024.10690425)
 
 Machine learning-powered recommendation system for e-commerce platforms. Increases user engagement through personalised product suggestions using collaborative and content-based filtering.
 
