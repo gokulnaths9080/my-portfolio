@@ -102,7 +102,7 @@ Interactive dashboard for real-time data analysis and visualisation with dynamic
 
 | Degree | Institution | Status |
 |--------|-------------|--------|
-| 🎓 MSc Management with Data Analytics | BPP University London | In Progress |
+| 🎓 MSc Management with Data Analytics | BPP University London | Completed |
 | 🎓 BSc Computer Science | Prior Institution | Completed |
 
 ---
