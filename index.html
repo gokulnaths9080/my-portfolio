@@ -850,6 +850,116 @@
       border: 3px solid var(--white);
       border-top-color: transparent;
     }
+  
+    /* ===== MOBILE RESPONSIVE OVERHAUL ===== */
+    @media (max-width: 767px) {
+      body { padding-top: 65px !important; }
+
+      /* Nav */
+      .header-top {
+        margin: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        min-height: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+      }
+      .header-top .navbar { padding: 0.5rem 0.75rem !important; }
+      .brand-text { font-size: 0.85rem !important; }
+      .profile-img-small { width: 30px !important; height: 30px !important; }
+      .header-top .navbar-toggler { display: block !important; border: 1px solid rgba(255,255,255,0.3) !important; padding: 4px 8px !important; }
+      .header-top .navbar-toggler-icon { width: 1.2em !important; height: 1.2em !important; }
+      .header-top .navbar-collapse { background: rgba(10,10,10,0.97) !important; border-radius: 12px !important; margin-top: 0.5rem !important; padding: 0.75rem !important; }
+      .header-top .navbar-nav { flex-direction: column !important; gap: 0.15rem !important; }
+      .header-top .nav-link { font-size: 0.9rem !important; padding: 0.55rem 0.75rem !important; }
+      .header-top .social-links { flex-wrap: wrap !important; justify-content: center !important; gap: 0.35rem !important; margin-top: 0.75rem !important; padding-top: 0.75rem !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
+      .header-top .social-link { width: 36px !important; height: 36px !important; }
+
+      /* Hero */
+      .hero { border-radius: 0 0 20px 20px !important; }
+      .hero-content { padding: 2rem 0 !important; max-width: 100% !important; }
+      .hero-title { font-size: 1.9rem !important; }
+      .hero-subtitle { font-size: 1rem !important; }
+      .hero-description { font-size: 0.95rem !important; margin-bottom: 1.5rem !important; }
+      .hero-cta { flex-direction: column !important; align-items: flex-start !important; gap: 0.65rem !important; }
+      .hero-cta .btn { padding: 0.7rem 1.4rem !important; font-size: 0.9rem !important; }
+
+      /* Sections wrapper */
+      .experience, .education, .skills, .educational-projects, .about, .contact {
+        margin: 0.5rem 0.3rem !important;
+        border-radius: 16px !important;
+        padding: 2.5rem 0 !important;
+      }
+      .section-title h2 { font-size: 1.6rem !important; }
+      .section-title p { font-size: 0.9rem !important; }
+
+      /* Experience cards - single column */
+      .experience-grid .col-lg-4,
+      .experience-grid .col-md-6 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+      .experience-card { padding: 1.25rem !important; }
+      .experience-header { flex-direction: column !important; align-items: flex-start !important; gap: 0.75rem !important; }
+      .experience-icon { width: 50px !important; height: 50px !important; font-size: 1.3rem !important; border-radius: 12px !important; }
+      .job-title { font-size: 1.1rem !important; }
+      .company-name { font-size: 0.95rem !important; }
+      .experience-details { flex-direction: column !important; gap: 0.3rem !important; }
+      .experience-details .duration,
+      .experience-details .location { font-size: 0.85rem !important; }
+
+      /* Education cards - single column */
+      .education-grid .col-lg-4,
+      .education-grid .col-md-6 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+      .education-card { padding: 1.25rem !important; }
+      .education-header { flex-direction: column !important; align-items: flex-start !important; gap: 0.6rem !important; }
+      .education-icon { width: 50px !important; height: 50px !important; font-size: 1.3rem !important; border-radius: 12px !important; }
+      .degree-title { font-size: 1.1rem !important; }
+      .institution-name { font-size: 0.95rem !important; }
+      .education-details { flex-direction: column !important; gap: 0.3rem !important; }
+
+      /* Skills cards - single column */
+      .skills-content .col-lg-6,
+      .skills-content .col-md-6 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+      .premium-card { padding: 1.25rem !important; }
+      .skills-category-title { font-size: 1.1rem !important; }
+      .skill-item-premium { padding: 0.65rem 0.75rem !important; }
+      .skill-name { font-size: 0.9rem !important; }
+      .skill-percentage { font-size: 0.8rem !important; }
+
+      /* Projects - single column */
+      .educational-projects .col-lg-6 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+      .project-card { padding: 1.25rem !important; }
+      .project-content h3 { font-size: 1.15rem !important; }
+      .project-description { font-size: 0.9rem !important; }
+      .project-icon { width: 48px !important; height: 48px !important; font-size: 1.2rem !important; }
+      .feature-item { font-size: 0.88rem !important; }
+
+      /* About */
+      .about-content { padding-left: 0 !important; padding-top: 1.25rem !important; }
+      .about-title { font-size: 1.35rem !important; }
+      .about-description { font-size: 0.95rem !important; }
+      .strengths-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+      .core-strengths-card { padding: 1.25rem !important; }
+      .strengths-title { font-size: 1.4rem !important; }
+      .about-image-wrapper { margin-bottom: 1rem !important; }
+
+      /* Contact */
+      .info-wrap { padding: 1.25rem !important; }
+      .info-item { padding: 1rem !important; }
+
+      /* Scroll top */
+      .scroll-top { bottom: 1rem !important; right: 0.75rem !important; width: 36px !important; height: 36px !important; }
+
+      /* General grid fixes */
+      .row { margin-left: 0 !important; margin-right: 0 !important; }
+      .container { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.55rem !important; }
+      .section-title h2 { font-size: 1.35rem !important; }
+      .btn { padding: 0.65rem 1.2rem !important; font-size: 0.88rem !important; }
+    }
+    /* ===== END MOBILE RESPONSIVE ===== */
+
   </style>
 
  
