@@ -292,12 +292,7 @@
         border-radius: var(--radius-md);
       }
 
-      .header-top .social-links {
-        justify-content: center;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
+      /* moved to .nav-right-group */
     }
 
     /* Adjust main content for top navigation */
@@ -872,7 +867,7 @@
       .header-top .navbar-collapse { background: rgba(10,10,10,0.97) !important; border-radius: 12px !important; margin-top: 0.5rem !important; padding: 0.75rem !important; }
       .header-top .navbar-nav { flex-direction: column !important; gap: 0.15rem !important; }
       .header-top .nav-link { font-size: 0.9rem !important; padding: 0.55rem 0.75rem !important; }
-      .header-top .social-links { flex-wrap: wrap !important; justify-content: center !important; gap: 0.35rem !important; margin-top: 0.75rem !important; padding-top: 0.75rem !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
+      .header-top .social-links { flex-wrap: wrap !important; justify-content: center !important; gap: 0.35rem !important; }
       .header-top .social-link { width: 36px !important; height: 36px !important; }
 
       /* Hero */
@@ -1085,18 +1080,69 @@
       100% { left: 125%; }
     }
 
-    @media (max-width: 991px) {
-      .nav-resume-btn {
-        margin: 0.75rem auto 0 !important;
-        width: fit-content;
-      }
-    }
-
     @media (max-width: 480px) {
       .nav-resume-btn { font-size: 0.82rem; padding: 0.55rem 1.1rem; }
       .nav-resume-text { display: inline; }
     }
     /* ===== END nav resume button ===== */
+
+  
+    /* ===== Nav right-side alignment fix ===== */
+    .navbar-collapse {
+      display: flex !important;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .nav-right-group .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+
+      .navbar-nav {
+        order: 1;
+      }
+
+      .nav-right-group {
+        order: 2;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 0.85rem;
+        width: 100%;
+      }
+
+      .nav-right-group .social-links {
+        justify-content: center;
+      }
+
+      .nav-resume-btn {
+        width: fit-content;
+      }
+    }
+    /* ===== END nav alignment fix ===== */
 
   </style>
 
@@ -1160,28 +1206,29 @@
             </li>
           </ul>
 
-          <!-- Social Links -->
-          <div class="social-links ms-3">
-            <a href="https://www.linkedin.com/in/gokulnath-settu-3b0b922a3/" target="_blank" class="social-link">
-              <i class="bi bi-linkedin"></i>
-            </a>
-            <a href="https://github.com/gokulnaths9080" target="_blank" class="social-link">
-              <i class="bi bi-github"></i>
-            </a>
-            <a href="tel:+447778099821" class="social-link">
-              <i class="bi bi-telephone"></i>
-            </a>
-            <a href="mailto:gokulnaths9080@gmail.com" class="social-link">
-              <i class="bi bi-envelope"></i>
+          <!-- Right-side nav group: social links + resume button -->
+          <div class="nav-right-group">
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/gokulnath-settu-3b0b922a3/" target="_blank" class="social-link">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="https://github.com/gokulnaths9080" target="_blank" class="social-link">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="tel:+447778099821" class="social-link">
+                <i class="bi bi-telephone"></i>
+              </a>
+              <a href="mailto:gokulnaths9080@gmail.com" class="social-link">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </div>
+
+            <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="nav-resume-btn">
+              <span class="nav-resume-shine"></span>
+              <i class="bi bi-download nav-resume-icon"></i>
+              <span class="nav-resume-text">Download Resume</span>
             </a>
           </div>
-
-          <!-- Animated Download Resume Button -->
-          <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="nav-resume-btn ms-3">
-            <span class="nav-resume-shine"></span>
-            <i class="bi bi-download nav-resume-icon"></i>
-            <span class="nav-resume-text">Download Resume</span>
-          </a>
         </div>
       </div>
     </nav>
@@ -1200,12 +1247,7 @@
           <h1 class="hero-title">Gokulnath Settu</h1>
           <p class="hero-subtitle">Full Stack Developer & Data Analytics Specialist</p>
           <p class="hero-description" id="premiumText"></p>
-          <div class="hero-cta">
-            <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="btn btn-primary">
-              <i class="bi bi-download"></i>
-              Download Resume
-            </a>
-          </div>
+          
         </div>
       </div>
 
