@@ -961,74 +961,7 @@
     /* ===== END MOBILE RESPONSIVE ===== */
 
   
-    /* ── Circular Ring Skills ── */
-    .skills-ring-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      padding: 0.5rem 0;
-    }
-
-    .skill-ring-item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .ring-svg {
-      width: 80px;
-      height: 80px;
-      transform: rotate(-90deg);
-      overflow: visible;
-    }
-
-    .ring-bg {
-      fill: none;
-      stroke: rgba(255,255,255,0.07);
-      stroke-width: 6;
-    }
-
-    .ring-fill {
-      fill: none;
-      stroke: url(#ringGlobalGrad);
-      stroke-width: 6;
-      stroke-linecap: round;
-      stroke-dasharray: 188.5;
-      stroke-dashoffset: 188.5;
-      transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);
-    }
-
-    .ring-pct {
-      fill: #7eb8ff;
-      font-size: 11px;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-      transform: rotate(90deg);
-      transform-origin: 40px 37px;
-    }
-
-    .ring-name {
-      fill: #e2e8f0;
-      font-size: 7.5px;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      transform: rotate(90deg);
-      transform-origin: 40px 52px;
-    }
-
-    @media (max-width: 767px) {
-      .skills-ring-grid { gap: 0.5rem !important; }
-      .ring-svg { width: 66px !important; height: 66px !important; }
-      .ring-pct { font-size: 10px !important; }
-      .ring-name { font-size: 6.5px !important; }
-    }
-
-    @media (max-width: 400px) {
-      .skills-ring-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 0.35rem !important; }
-      .ring-svg { width: 58px !important; height: 58px !important; }
-    }
-
-  </style>
+      </style>
 
  
 </head>
