@@ -1089,20 +1089,34 @@
 
   
     /* ===== Nav right-side alignment fix ===== */
+    .header-top .navbar > .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
     .navbar-collapse {
       display: flex !important;
       align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      justify-content: center;
+      flex: 1;
+      gap: 1.5rem;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
     }
 
     .nav-right-group {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-left: 1rem;
       flex-wrap: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-right-group .social-links {
@@ -1113,21 +1127,29 @@
     }
 
     @media (max-width: 991px) {
+      .header-top .navbar > .container {
+        flex-wrap: wrap;
+      }
+
       .navbar-collapse {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         justify-content: flex-start;
+        flex: 0 0 100%;
+        gap: 0;
       }
 
       .navbar-nav {
         order: 1;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
       }
 
       .nav-right-group {
         order: 2;
         flex-direction: column;
         align-items: center;
-        margin-left: 0;
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1169,7 +1191,7 @@
 
         <!-- Navigation Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" href="#hero">
                 <i class="bi bi-house"></i> Home
@@ -3556,6 +3578,31 @@
       document.querySelectorAll(group).forEach(function(c) { c.classList.remove('expanded'); });
       if (!isExpanded) card.classList.add('expanded');
     }
+  </script>
+
+
+  <script>
+    // Auto-close mobile nav menu when a link is clicked
+    document.addEventListener('DOMContentLoaded', function() {
+      var navbarCollapseEl = document.getElementById('navbarNav');
+      if (!navbarCollapseEl) return;
+
+      var clickableSelectors = '#navbarNav .nav-link, #navbarNav .social-link, #navbarNav .nav-resume-btn';
+
+      document.querySelectorAll(clickableSelectors).forEach(function(el) {
+        el.addEventListener('click', function() {
+          // Only collapse if menu is currently open (mobile view)
+          if (navbarCollapseEl.classList.contains('show')) {
+            if (window.bootstrap && window.bootstrap.Collapse) {
+              var instance = window.bootstrap.Collapse.getOrCreateInstance(navbarCollapseEl);
+              instance.hide();
+            } else {
+              navbarCollapseEl.classList.remove('show');
+            }
+          }
+        });
+      });
+    });
   </script>
 
 </body>
