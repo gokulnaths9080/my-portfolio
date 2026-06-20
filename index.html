@@ -1016,6 +1016,88 @@
     }
     /* ===== END expand/collapse ===== */
 
+  
+    /* ===== Animated Download Resume Button (top nav) ===== */
+    .nav-resume-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.3rem;
+      background: linear-gradient(135deg, #4facfe 0%, #764ba2 100%);
+      background-size: 200% 200%;
+      color: #fff !important;
+      text-decoration: none;
+      border-radius: 50px;
+      font-family: var(--nav-font, 'Inter', sans-serif);
+      font-weight: 600;
+      font-size: 0.9rem;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 4px 18px rgba(102, 126, 234, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.6s ease;
+      animation: navResumeGradient 4s ease infinite, navResumePulse 2.6s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .nav-resume-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 28px rgba(102, 126, 234, 0.6);
+      color: #fff !important;
+    }
+
+    .nav-resume-icon {
+      font-size: 1rem;
+      animation: navResumeBounce 1.8s ease-in-out infinite;
+    }
+
+    .nav-resume-shine {
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+      transform: skewX(-20deg);
+      animation: navResumeShineMove 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes navResumeGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes navResumePulse {
+      0%, 100% { box-shadow: 0 4px 18px rgba(102, 126, 234, 0.45); }
+      50% { box-shadow: 0 4px 26px rgba(79, 172, 254, 0.65); }
+    }
+
+    @keyframes navResumeBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    @keyframes navResumeShineMove {
+      0% { left: -75%; }
+      50% { left: 125%; }
+      100% { left: 125%; }
+    }
+
+    @media (max-width: 991px) {
+      .nav-resume-btn {
+        margin: 0.75rem auto 0 !important;
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-resume-btn { font-size: 0.82rem; padding: 0.55rem 1.1rem; }
+      .nav-resume-text { display: inline; }
+    }
+    /* ===== END nav resume button ===== */
+
   </style>
 
  
@@ -1093,6 +1175,13 @@
               <i class="bi bi-envelope"></i>
             </a>
           </div>
+
+          <!-- Animated Download Resume Button -->
+          <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="nav-resume-btn ms-3">
+            <span class="nav-resume-shine"></span>
+            <i class="bi bi-download nav-resume-icon"></i>
+            <span class="nav-resume-text">Download Resume</span>
+          </a>
         </div>
       </div>
     </nav>
@@ -1112,7 +1201,6 @@
           <p class="hero-subtitle">Full Stack Developer & Data Analytics Specialist</p>
           <p class="hero-description" id="premiumText"></p>
           <div class="hero-cta">
-            <a href="#contact" class="btn btn-outline">Get In Touch</a>
             <a href="assets/media/cv/Gokulnath_Resume.pdf" target="_blank" download class="btn btn-primary">
               <i class="bi bi-download"></i>
               Download Resume
