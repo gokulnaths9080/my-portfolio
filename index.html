@@ -961,7 +961,62 @@
     /* ===== END MOBILE RESPONSIVE ===== */
 
   
-      </style>
+      
+    /* ===== Experience & Education: click-to-expand ===== */
+    .exp-expandable, .edu-expandable {
+      cursor: pointer;
+    }
+
+    .exp-expandable:hover, .edu-expandable:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-heavy, 0 20px 40px rgba(0,0,0,0.3));
+      border-color: rgba(102, 126, 234, 0.35);
+    }
+
+    .exp-collapsible, .edu-collapsible {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0 !important;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease, margin-top 0.3s ease;
+    }
+
+    .exp-expandable.expanded .exp-collapsible,
+    .edu-expandable.expanded .edu-collapsible {
+      max-height: 1400px;
+      opacity: 1;
+      margin-top: 1.5rem !important;
+    }
+
+    .exp-toggle-btn {
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(102,126,234,0.12);
+      border: 1px solid rgba(102,126,234,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      font-size: 1rem;
+      transition: transform 0.35s ease, background 0.3s ease;
+      align-self: center;
+    }
+
+    .exp-expandable.expanded .exp-toggle-btn,
+    .edu-expandable.expanded .exp-toggle-btn {
+      transform: rotate(180deg);
+      background: rgba(102,126,234,0.25);
+    }
+
+    @media (max-width: 767px) {
+      .exp-toggle-btn { align-self: flex-start; margin-top: 0.5rem; }
+    }
+    /* ===== END expand/collapse ===== */
+
+  </style>
 
  
 </head>
@@ -1435,7 +1490,7 @@
           <!-- Experience Item 1 - Swift Ride -->
           <div class="col-lg-4 col-md-6 mb-4">
           <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="experience-card">
+            <div class="experience-card exp-expandable" onclick="toggleCard(this)">
               <div class="experience-header">
                 <div class="experience-icon">
                   <i class="bi bi-laptop"></i>
@@ -1454,9 +1509,10 @@
                     </span>
                   </div>
                 </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
               </div>
               
-              <div class="experience-content">
+              <div class="experience-content exp-collapsible">
                 <div class="experience-description">
                   <p>Developed comprehensive backend system using Django framework with PostgreSQL database and Redis caching for ride-sharing platform.</p>
                 </div>
@@ -1508,7 +1564,7 @@
           <!-- Experience Item 2 - Ginger Media Group -->
           <div class="col-lg-4 col-md-6 mb-4">
           <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="experience-card">
+            <div class="experience-card exp-expandable" onclick="toggleCard(this)">
               <div class="experience-header">
                 <div class="experience-icon">
                   <i class="bi bi-briefcase"></i>
@@ -1527,9 +1583,10 @@
                     </span>
                   </div>
                 </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
               </div>
               
-              <div class="experience-content">
+              <div class="experience-content exp-collapsible">
                 <div class="experience-description">
                   <p>Built end-to-end web application using React.js frontend and Node.js serverless backend architecture for freelance job platform.</p>
                 </div>
@@ -1577,7 +1634,7 @@
           <!-- Experience Item 3 - XESS Tech Link -->
           <div class="col-lg-4 col-md-6 mb-4">
           <div class="experience-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="experience-card">
+            <div class="experience-card exp-expandable" onclick="toggleCard(this)">
               <div class="experience-header">
                 <div class="experience-icon">
                   <i class="bi bi-code-slash"></i>
@@ -1596,9 +1653,10 @@
                      </span>
                   </div>
                 </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
               </div>
               
-              <div class="experience-content">
+              <div class="experience-content exp-collapsible">
                 <div class="experience-description">
                   <p>Led development of robust web applications serving thousands of users, with focus on performance optimization and scalable architecture.</p>
                 </div>
@@ -1923,7 +1981,7 @@
           <!-- Education Item 1 - Masters -->
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="education-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="education-card">
+            <div class="education-card edu-expandable" onclick="toggleCard(this)">
               <div class="education-header">
                 <div class="education-icon">
                   <i class="bi bi-mortarboard"></i>
@@ -1943,8 +2001,9 @@
                   </div>
         </div>
     </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
       
-              <div class="education-content">
+              <div class="education-content edu-collapsible">
                 <div class="education-description">
                   <p>Currently pursuing advanced studies in management with specialization in data analytics, focusing on machine learning, business intelligence, and data-driven decision making.</p>
                 </div>
@@ -1978,7 +2037,7 @@
           <!-- Education Item 2 - Bachelors -->
           <div class="col-lg-4 col-md-6 mb-4">
           <div class="education-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="education-card">
+            <div class="education-card edu-expandable" onclick="toggleCard(this)">
               <div class="education-header">
                 <div class="education-icon">
                   <i class="bi bi-book"></i>
@@ -1998,8 +2057,9 @@
                   </div>
                 </div>
               </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
               
-              <div class="education-content">
+              <div class="education-content edu-collapsible">
                 <div class="education-description">
                   <p>Built a strong foundation in computer science fundamentals including programming, data structures, algorithms, and database systems.</p>
                 </div>
@@ -2033,7 +2093,7 @@
           <!-- Education Item 3 - Higher Secondary -->
           <div class="col-lg-4 col-md-6 mb-4">
           <div class="education-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="education-card">
+            <div class="education-card edu-expandable" onclick="toggleCard(this)">
               <div class="education-header">
                 <div class="education-icon">
                   <i class="bi bi-award"></i>
@@ -2053,8 +2113,9 @@
                   </div>
                 </div>
               </div>
+                <div class="exp-toggle-btn"><i class="bi bi-chevron-down"></i></div>
               
-              <div class="education-content">
+              <div class="education-content edu-collapsible">
                 <div class="education-description">
                   <p>Completed higher secondary education with focus on science and mathematics, laying the groundwork for computer science studies.</p>
                 </div>
@@ -3354,6 +3415,16 @@
         });
       });
     })();
+  </script>
+
+
+  <script>
+    function toggleCard(card) {
+      var isExpanded = card.classList.contains('expanded');
+      var group = card.classList.contains('exp-expandable') ? '.exp-expandable' : '.edu-expandable';
+      document.querySelectorAll(group).forEach(function(c) { c.classList.remove('expanded'); });
+      if (!isExpanded) card.classList.add('expanded');
+    }
   </script>
 
 </body>
