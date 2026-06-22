@@ -30,16 +30,16 @@
     /* Modern Portfolio Design System */
     :root {
       /* New Color Palette */
-      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --primary-gradient: linear-gradient(135deg, #E4FD97 0%, #2D3E2C 100%);
+      --secondary-gradient: linear-gradient(135deg, #4A6048 0%, #2D3E2C 100%);
+      --accent-gradient: linear-gradient(135deg, #E4FD97 0%, #C8E06E 100%);
       --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       --light-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       
       /* Modern Colors */
-      --primary-color: #667eea;
-      --secondary-color: #764ba2;
-      --accent-color: #4facfe;
+      --primary-color: #E4FD97;
+      --secondary-color: #2D3E2C;
+      --accent-color: #E4FD97;
       --success-color: #10b981;
       --warning-color: #f59e0b;
       --error-color: #ef4444;
@@ -767,7 +767,7 @@
 
     .form-control:focus {
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      box-shadow: 0 0 0 3px rgba(228, 253, 151, 0.1);
       outline: none;
     }
 
@@ -970,7 +970,7 @@
     .exp-expandable:hover, .edu-expandable:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-heavy, 0 20px 40px rgba(0,0,0,0.3));
-      border-color: rgba(102, 126, 234, 0.35);
+      border-color: rgba(228, 253, 151, 0.35);
     }
 
     .exp-collapsible, .edu-collapsible {
@@ -994,8 +994,8 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(102,126,234,0.12);
-      border: 1px solid rgba(102,126,234,0.25);
+      background: rgba(228, 253, 151, 0.12);
+      border: 1px solid rgba(228, 253, 151, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1008,7 +1008,7 @@
     .exp-expandable.expanded .exp-toggle-btn,
     .edu-expandable.expanded .exp-toggle-btn {
       transform: rotate(180deg);
-      background: rgba(102,126,234,0.25);
+      background: rgba(228, 253, 151, 0.25);
     }
 
     @media (max-width: 767px) {
@@ -1024,9 +1024,9 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.65rem 1.3rem;
-      background: linear-gradient(135deg, #4facfe 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #E4FD97 0%, #2D3E2C 100%);
       background-size: 200% 200%;
-      color: #fff !important;
+      color: #1a2618 !important;
       text-decoration: none;
       border-radius: 50px;
       font-family: var(--nav-font, 'Inter', sans-serif);
@@ -1034,7 +1034,7 @@
       font-size: 0.9rem;
       overflow: hidden;
       isolation: isolate;
-      box-shadow: 0 4px 18px rgba(102, 126, 234, 0.45);
+      box-shadow: 0 4px 18px rgba(228, 253, 151, 0.45);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.6s ease, padding 0.3s ease;
       animation: navResumeGradient 4s ease infinite, navResumePulse 2.6s ease-in-out infinite;
       white-space: nowrap;
@@ -1050,8 +1050,8 @@
 
     .nav-resume-btn:hover {
       transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 10px 28px rgba(102, 126, 234, 0.6);
-      color: #fff !important;
+      box-shadow: 0 10px 28px rgba(228, 253, 151, 0.5);
+      color: #1a2618 !important;
     }
 
     .nav-resume-icon {
@@ -1078,8 +1078,8 @@
     }
 
     @keyframes navResumePulse {
-      0%, 100% { box-shadow: 0 4px 18px rgba(102, 126, 234, 0.45); }
-      50% { box-shadow: 0 4px 26px rgba(79, 172, 254, 0.65); }
+      0%, 100% { box-shadow: 0 4px 18px rgba(228, 253, 151, 0.45); }
+      50% { box-shadow: 0 4px 26px rgba(228, 253, 151, 0.65); }
     }
 
     @keyframes navResumeBounce {
@@ -1301,7 +1301,7 @@
           font-weight: 700;
           color: #ffffff;
           margin-bottom: 1rem;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #E4FD97 0%, #2D3E2C 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -1358,14 +1358,14 @@
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #E4FD97 0%, #2D3E2C 100%);
           color: white;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+          box-shadow: 0 4px 15px rgba(228, 253, 151, 0.4);
         }
 
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+          box-shadow: 0 8px 25px rgba(228, 253, 151, 0.6);
           color: white;
         }
 
@@ -1495,7 +1495,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(228, 253, 151, 0.1) 0%, rgba(45, 62, 44, 0.1) 100%);
             pointer-events: none;
           }
 
@@ -1525,7 +1525,7 @@
           }
 
           .about-highlight {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(228, 253, 151, 0.1) 0%, rgba(45, 62, 44, 0.1) 100%);
             padding: 2rem;
             border-radius: 15px;
             border-left: 4px solid var(--accent-color);
@@ -1590,7 +1590,7 @@
              left: -100%;
              width: 100%;
              height: 100%;
-             background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+             background: linear-gradient(90deg, transparent, rgba(228, 253, 151, 0.3), transparent);
              transition: left 0.5s ease;
            }
 
@@ -2082,14 +2082,14 @@
         }
 
         .skill-tag {
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          background: linear-gradient(135deg, rgba(228, 253, 151, 0.1) 0%, rgba(45, 62, 44, 0.1) 100%);
           color: var(--accent-color);
           padding: 0.5rem 1rem;
           border-radius: 20px;
           font-size: 0.85rem;
           font-weight: 600;
           font-family: var(--nav-font);
-          border: 1px solid rgba(102, 126, 234, 0.2);
+          border: 1px solid rgba(228, 253, 151, 0.2);
           transition: all 0.3s ease;
         }
 
@@ -2640,7 +2640,7 @@
         .premium-card:hover {
           transform: translateY(-8px) scale(1.02);
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-          border-color: rgba(102, 126, 234, 0.3);
+          border-color: rgba(228, 253, 151, 0.3);
         }
 
         .premium-card:hover::before {
@@ -2730,7 +2730,7 @@
         .ring-pct {
           font-size: 0.95rem;
           font-weight: 700;
-          color: #8ec0ff;
+          color: #E4FD97;
           font-family: 'Inter', sans-serif;
         }
 
@@ -3023,7 +3023,7 @@
         }
 
         .project-badge {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #E4FD97 0%, #2D3E2C 100%);
           color: white;
           padding: 0.5rem 1rem;
           border-radius: 20px;
@@ -3075,14 +3075,14 @@
         }
 
         .tech-tag {
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          background: linear-gradient(135deg, rgba(228, 253, 151, 0.1) 0%, rgba(45, 62, 44, 0.1) 100%);
           color: var(--accent-color);
           padding: 0.4rem 0.8rem;
           border-radius: 15px;
           font-size: 0.8rem;
           font-weight: 600;
           font-family: var(--nav-font);
-          border: 1px solid rgba(102, 126, 234, 0.2);
+          border: 1px solid rgba(228, 253, 151, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -3192,8 +3192,8 @@
         }
 
         .core-strengths-card {
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-          border: 1px solid rgba(102, 126, 234, 0.1);
+          background: linear-gradient(135deg, rgba(228, 253, 151, 0.05) 0%, rgba(45, 62, 44, 0.05) 100%);
+          border: 1px solid rgba(228, 253, 151, 0.1);
           border-radius: 20px;
           padding: 2.5rem;
           margin: 2rem 0;
@@ -3536,8 +3536,8 @@
   <svg width="0" height="0" style="position:absolute">
     <defs>
       <linearGradient id="ringGlobalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#4facfe"/>
-        <stop offset="100%" stop-color="#764ba2"/>
+        <stop offset="0%" stop-color="#E4FD97"/>
+        <stop offset="100%" stop-color="#2D3E2C"/>
       </linearGradient>
     </defs>
   </svg>
