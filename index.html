@@ -255,9 +255,6 @@
       margin-top: 1rem;
       padding: 1rem;
       backdrop-filter: blur(10px);
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.3s ease;
       pointer-events: auto;
     }
 
@@ -278,9 +275,16 @@
       }
 
       .header-top .navbar-collapse {
+        transition: opacity 0.35s ease;
+      }
+
+      .header-top .navbar-collapse:not(.show) {
+        opacity: 0;
+      }
+
+      .header-top .navbar-collapse.show,
+      .header-top .navbar-collapse.collapsing {
         opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
       }
 
       .header-top .navbar-nav {
